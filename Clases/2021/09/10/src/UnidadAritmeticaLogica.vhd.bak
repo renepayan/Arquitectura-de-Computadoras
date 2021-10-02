@@ -1,0 +1,20 @@
+-- Unidad Aritmetica logica o ALU
+-- Esta contendra las instrucciones matematicas que se pueden realizar en la arquitectura
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_signed.all;
+use ieee.numeric_std.all;
+
+package UnidadAritmeticaLogica is
+	-- Declaracion de constantes
+	signal aux    : std_logic_vector(15 downto 0) := "0000000000000000";  -- registro para revision de Flag
+	constant zero : std_logic_vector(15 downto 0) := "0000000000000000" ;   -- Para 0  
+	constant full : std_logic_vector(15 downto 0) := "0000000011111111" ;   -- Para 1
+	-- Aqui van los procedimientos
+	procedure SUMA(
+						signal entrada1: in std_logic_vector (7 downto 0);  -- Esta es la primer entrada de datos
+						signal entrada2: in std_logic_vector (7 downto 0); -- Esta es la segunda entrada de datos
+						signal salida:	  out std_logic_vector (15 downto 0); -- Esta es la salida de la operacion
+						signal banderas: out std_logic_vector (2 downto 0)
+						);
+end UnidadAritmeticaLogica;

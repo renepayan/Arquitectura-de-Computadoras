@@ -1,0 +1,276 @@
+--          INSTITUTO POLITECNICO NACIONAL 
+--           Escuela Superior de Cómputo
+--           Arquitectura de Computadoras
+--           Jimenez Vargas Carlos Alexis
+--                Ramos Gómez Elisa
+--         Santillan Zaragoza Erick Ignacio
+--     Practica 1 Arquitectura Basica de 8 bits
+
+--Propuesta de ALU_PACKAGE
+
+--bibliotecas
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+
+package ALU_PACKAGE is
+
+   constant cero     : std_logic_vector(7 downto 0) := "00000000";
+   constant lleno    : std_logic_vector(7 downto 0) := "00001111";
+   signal resultado  : std_logic_vector(15 downto 0) := "0000000000000000";
+   
+   procedure suma ( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+    procedure res ( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure multi( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(15 downto 0);
+   );
+
+   procedure divi ( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure orS (  signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure andS(  signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure notS ( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure norS ( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure nandS (signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure xorS ( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure xnorS (signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure cDerS (signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+    procedure cIzqS (signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   procedure ifS (  signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0);
+   );
+
+   end package;
+
+
+package body ALU_PACKAGE is 
+
+    procedure suma(signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) + signed(B));
+                        respuesta <= resultado;
+    end suma;
+
+    procedure res ( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) - signed(B));
+                        respuesta <= resultado;
+    end res;
+
+    procedure multi(signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(15 downto 0)) is
+
+                    begin 
+                        resultado <= std_logic_vector(signed(A) * signed(B));
+                        respuesta <= resultado;
+    end multi;
+
+    procedure divi (signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) / signed(B));
+                        respuesta <= resultado;
+    end divi;
+
+    procedure orS ( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) OR signed(B));
+                        respuesta <= resultado;
+    end orS;
+
+    procedure andS (signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) AND signed(B));
+                        respuesta <= resultado;
+    end andS;
+
+    procedure notS (signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & NOT signed(A));
+                        respuesta <= resultado;
+    end notS;
+
+    procedure norS( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) NOR signed(B));
+                        respuesta <= resultado;
+    end norS;
+
+    procedure nandS(signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) NAND signed(B));
+                        respuesta <= resultado;
+    end nandS;
+
+    procedure xorS( signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) XOR signed(B));
+                        respuesta <= resultado;
+    end xorS;
+
+    procedure xnorS(signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                        resultado <= std_logic_vector("0000" & signed(A) XNOR signed(B));
+                        respuesta <= resultado;
+    end xnorS;
+
+    procedure cDerS(signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                       resultado <= to_stdlogicvector("0000" & to_bitvector(A) srl 1);
+                       respuesta <= resultado;
+    end cDerS;
+
+    procedure cIzqS(signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                       resultado <= to_stdlogicvector("0000" & to_bitvector(A) sll 1);
+                       respuesta <= resultado;
+    end cIzqS;
+
+    procedure ifS(  signal entradaA : in std_logic_vector(3 downto 0);
+                    signal entradaB : in std_logic_vector(3 downto 0);
+                    signal flag    : out std_logic_vector(2 downto 0);
+                    signal respuesta:out std_logic_vector(7 downto 0)) is 
+
+                    begin 
+                       resultado <= std_logic_vector("0000" & signed(A));
+                       respuesta <= resultado;
+    end ifS;
+
+    --Senalizacion
+
+            --Si la operacion tuvo 0 entonces enciendo el bit
+            if(resultado = cero) then
+                flag(0) <= '1';
+            else
+                flag(0) <= '0';
+            end if;
+
+            --Si la operacion se desbordo enciendo bit
+            if(resultado > lleno) then
+                flag(1) <= '1';
+            else
+                flag(1) <= '0';
+            end if;
+
+            --Si la operacion es negativa enciendo bit
+            if(resultado < cero) then
+                flag(2) <= '1';
+            else
+                flag(2) <= '0';
+            end if;
+
+end ALU_PACKAGE;

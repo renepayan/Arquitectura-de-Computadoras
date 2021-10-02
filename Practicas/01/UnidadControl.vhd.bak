@@ -1,0 +1,186 @@
+--Necesitamos un formato de instrucciones
+--Codigo de operacion 
+
+-- Dos tipos
+-- Alambrada
+-- Microprogramada
+
+--LIBRARY IEEE;
+--USE IEEE.STD_LOGIC_1164.ALL;
+--USE IEEE.STD_LOGIC_SIGNED.ALL;
+
+library ieee;
+use ieee.std_logic_1164.all;
+--use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+
+--use IEEE.NUMERIC_STD.all;
+
+--use work.ALU_UC.all;   --Paquete del ALU
+--use work.bcd_7seg.all;
+
+entity U_control is
+    Port(
+        clk, clr    : in std_logic; --Reloj, start
+        exe         : in std_logic; --Boton de ejecucion
+        ent_datos   : in std_logic_vector(7 downto 0); --Datos de los switches
+        ent_inst    : in std_logic_vector(2 downto 0); --Instrucciones del switch
+        bus_datos   : inout std_logic_vector(7 downto 0); --Bus de datos
+        flag        : out std_logic_vector(2 downto 0);  --Banderas de estados
+        bus_dir     : out std_logic_vector(12 downto 0); --Bus de direcciones de 13 bits
+        bus_ctrl    : out std_logic_vector(11 downto 0); --Bus de control
+        Disp_7sg    : out std_logic_vector(55 downto 0)  --Despliegue en 7 seg 
+    );
+end entity;
+
+architecture control of U_control is
+    signal AX   : std_logic_vector(15 downto 0) := "0000000000000000"; --Acumulador
+    signal PC   : unsigned(7 downto 0)          := "00000000"; --Contador de programa
+    signal IX   : std_logic_vector(12 downto 0) := "0000000000000"; -- Indice
+    signal inst : std_logic_vector(3 downto 0)  := "0000"; -- Zero
+    signal aux  : std_logic_vector(7 downto 0)  := "00000000"; --Auxiliar
+    
+    
+    begin
+    
+    UC : process (clk,clr,exe,ent_datos,ent_inst)
+        
+        begin
+        
+        if (clr = '0') then --Si se da el reset
+            
+            AX <= "0000000000000000"; -- Limpia el acumulador de 16 bits
+            PC <= "00000000";        -- El contador de programa
+            IX <= "0000000000000";   -- El Indice
+        
+        elsif (clk'event and clk = '1') then 
+        
+            if (exe = '0') then     --Fue presionado el boton de ejecucion
+                
+                case ent_inst is    --Set de instrucciones
+                
+                    when "000" =>
+                        AX <= "0000000000000000"; --Limpiar el acumulador
+                        PC <= PC + 1;
+                    
+                    when "001" =>
+                    
+                        AX(7 downto 0) <= ent_datos; -- Carga en la parte baja del acum
+                        PC <= PC + 1;
+                        
+                    when "010" => --
+                        
+                        IX(7 downto 0) <= ent_datos; --Carga el registro con una direccion
+                        
+                        bus_ctrl(0) <= '0'; --Banco de memoria 0
+                        bus_ctrl(1) <= '0'; --Bando de memoria 1
+                        bus_ctrl(2) <= '0'; --Activa la mascara 0 de RAM
+                        bus_ctrl(3) <= '0'; --Desactiva mascara 1
+                        bus_ctrl(4) <= '0'; --Desactiva mascara 2
+                        bus_ctrl(5) <= '0'; --Desactiva mascara 3
+                        
+                        bus_ctrl(6) <= '0'; --Seleccion de fila
+                        bus_ctrl(7) <= '0'; --Seleccion de columna
+                        bus_ctrl(8) <= '1'; --Activa el reloj de la RAM
+                        bus_ctrl(9) <= clk; --Conmutacion de reloj a RAM
+                        bus_ctrl(10) <= '1'; --Escritura desactivada
+                        bus_ctrl(11) <= '1'; --Chip enable de la ram activado
+                        
+                        bus_dir(10) <= '1'; --A10 del bus de dir en 1 pa pre-carga
+                        
+                        bus_dir <= IX; --Se carga la direccion del registro IX
+                        AX <= std_logic_vector("00000000" & bus_datos); --Carga AX con el dato de la direccion
+                        
+                        PC <= PC + 1;
+                    
+                    when "011" => 
+                        IX (7 downto 0) <= ent_datos; --carga el regiustro ind con una dir
+                        
+                        bus_ctrl(0) <= '0'; -- Banco de memoria 0
+                        bus_ctrl(1) <= '0'; -- Banco de memoria 1
+                        bus_ctrl(2) <= '0'; -- Activa la mascara 0 de RAM
+                        bus_ctrl(3) <= '0'; -- Desactiva mascara 1
+                        bus_ctrl(4) <= '0'; -- Desactiva mascara 2
+                        bus_ctrl(5) <= '0'; -- Desactiva mascara 3
+                        bus_ctrl(6) <= '1'; -- Seleccion de fila 
+                        bus_ctrl(7) <= '0'; -- Seleccion de columna
+                        bus_ctrl(8) <= '1'; -- Activa el reloj de RAM
+                        bus_ctrl(9) <= clk; -- Conmutacion de reloj a RAM
+                        bus_ctrl(10) <= '0'; -- Escritura activada
+                        bus_ctrl(11) <= '1'; --Chip enable de la ram activado
+                        
+                        bus_dir(10) <= '1'; --A10 del bus de dir en 1 para precarga
+                        
+                        bus_dir <= IX; --Carga de la dir del registro IX
+                        bus_datos <= AX (7 downto 0); -- dir de mem el dato de AX
+                        
+                        PC <= PC + 1; 
+                        
+                    when "100" =>
+                        
+                        --Suma del acumulador con un dato y el resultado se almacena en el 
+                        --acumulador
+                        
+                        --OPERACION
+                        --ADD(AX(7 downto 0), ent_datos, flag, AX(7 downto 0));
+                        PC <= PC+1;
+                    
+                    when "101" =>
+                        --Resta del acumulador con un dato y el resultado se almacena en el 
+                        --acumulador
+                        
+                        --OPERACION
+                        --SUB(AX(7 downto 0), ent_datos, flag, AX(7 downto 0));
+                        PC <= PC+1;
+                    
+                    when "110" =>
+                        --Multiplica del acumulador con un dato y el resultado se almacena en  
+                        --el acumulador
+                        
+                        --OPERACION
+                        --MUL(AX(7 downto 0), ent_datos, flag, AX);
+                        PC <= PC+1;
+                        
+                    when others =>
+                        --OR del acumulador con un dato y el resultado se almacena en  
+                        --el acumulador
+                        
+                        --OPERACION
+                        --LOR(AX(7 downto 0), ent_datos, flag, AX(7 downto 0));
+                        PC <= PC+1;
+                    
+                end case;
+            
+            else --No se ejecuto el exe
+                
+                    --Mostrando el contador de programa
+                aux <= std_logic_vector(PC);
+                --bcd_conv(aux(3 downto 0), Disp_7sg(48 downto 42)); --Primer nibble
+                --bcd_conv(aux(7 downto 4), Disp_7sg(55 downto 49)); --Segundo nibble
+                
+                    --Mostrando el registro de indice
+                --bcd_conv(IX(3 downto 0), Disp_7sg(34 downto 28)); --Primer nibble
+                --bcd_conv(IX(7 downto 4), Disp_7sg(41 downto 35)); --Segundo nibble
+                    
+                    --Mostrando el codigo de la instruccion
+                --inst <= std_logic_vector('0' & ent_inst);
+                --bcd_conv(inst, Disp_7sg(20 downto 14)); --Primer nibble (REVISAR)
+                --inst <= "0000"; 
+                --bcd_conv(inst, Disp_7sg(27 downto 21)); --Segundo nibble
+                
+                    --Mostrando el dato en el acumulador
+                
+                --bcd_conv(AX(3 downto 0), Disp_7sg(6 downto 0)); --Primer nibble
+                --bcd_conv(AX(7 downto 4), Disp_7sg(13 downto 7)); --Segundo nibble
+            
+            end if; 
+        
+        end if; --Fin del clk
+    
+    end process UC;
+        
+end architecture;
+        
+            
+    
+    

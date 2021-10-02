@@ -1,0 +1,130 @@
+# Reading C:/altera/12.1/modelsim_ase/tcl/vsim/pref.tcl 
+# do UnidadControl_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying c:\altera\12.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied c:\altera\12.1\modelsim_ase\win32aloem/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vcom -93 -work work {C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ALU_PACKAGE
+# -- Compiling package body ALU_PACKAGE
+# -- Loading package ALU_PACKAGE
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(119): Cannot drive signal "resultado" from procedure "suma".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(129): Cannot drive signal "resultado" from procedure "res".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(139): Cannot drive signal "resultado" from procedure "multi".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(149): Cannot drive signal "resultado" from procedure "divi".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(159): Cannot drive signal "resultado" from procedure "orS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(159): (vcom-1275) Arguments of overloaded "or" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(169): Cannot drive signal "resultado" from procedure "andS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(169): (vcom-1275) Arguments of overloaded "and" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(179): Cannot drive signal "resultado" from procedure "notS".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(189): Cannot drive signal "resultado" from procedure "norS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(189): (vcom-1275) Arguments of overloaded "nor" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(199): Cannot drive signal "resultado" from procedure "nandS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(199): (vcom-1275) Arguments of overloaded "nand" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(209): Cannot drive signal "resultado" from procedure "xorS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(209): (vcom-1275) Arguments of overloaded "xor" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(219): Cannot drive signal "resultado" from procedure "xnorS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(219): (vcom-1275) Arguments of overloaded "xnor" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(229): Cannot drive signal "resultado" from procedure "cDerS".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(239): Cannot drive signal "resultado" from procedure "cIzqS".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(249): Cannot drive signal "resultado" from procedure "ifS".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(256): VHDL Compiler exiting
+# ** Error: c:/altera/12.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./UnidadControl_run_msim_rtl_vhdl.do line 8
+# c:/altera/12.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -93 -work work {C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd}"
+vsim +altera -do UnidadControl_run_msim_rtl_vhdl.do -l msim_transcript -gui gate_work.unidadcontrol
+# vsim +altera -do UnidadControl_run_msim_rtl_vhdl.do -l msim_transcript -gui gate_work.unidadcontrol 
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.vital_timing(body)
+# Loading ieee.vital_primitives(body)
+# Loading altera.dffeas_pack
+# Loading altera.altera_primitives_components
+# Loading cycloneive.cycloneive_atom_pack(body)
+# Loading cycloneive.cycloneive_components
+# Loading gate_work.unidadcontrol(structure)
+# Loading altera.dffeas(vital_dffeas)
+# Loading cycloneive.cycloneive_lcell_comb(vital_lcell_comb)
+# Loading cycloneive.cycloneive_mac_out(vital_cycloneive_mac_out)
+# Loading ieee.std_logic_arith(body)
+# Loading cycloneive.cycloneive_io_obuf(arch)
+# Loading cycloneive.cycloneive_io_ibuf(arch)
+# Loading cycloneive.cycloneive_clkctrl(vital_clkctrl)
+# Loading cycloneive.cycloneive_ena_reg(behave)
+# Loading ieee.std_logic_unsigned(body)
+# Loading cycloneive.cycloneive_mac_mult(vital_cycloneive_mac_mult)
+# Loading cycloneive.cycloneive_mac_data_reg(vital_cycloneive_mac_data_reg)
+# Loading cycloneive.cycloneive_mac_sign_reg(cycloneive_mac_sign_reg)
+# Loading cycloneive.cycloneive_mac_mult_internal(vital_cycloneive_mac_mult_internal)
+# ** Warning: Design size of 2 instances exceeds ModelSim ALTERA recommended capacity.
+# This may because you are loading cell libraries which are not recommended with
+# the ModelSim Altera version. Expect performance to be adversely affected.
+# do UnidadControl_run_msim_rtl_vhdl.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Modifying modelsim.ini
+# 
+# vcom -93 -work work {C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd}
+# Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling package ALU_PACKAGE
+# -- Compiling package body ALU_PACKAGE
+# -- Loading package ALU_PACKAGE
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(119): Cannot drive signal "resultado" from procedure "suma".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(129): Cannot drive signal "resultado" from procedure "res".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(139): Cannot drive signal "resultado" from procedure "multi".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(149): Cannot drive signal "resultado" from procedure "divi".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(159): Cannot drive signal "resultado" from procedure "orS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(159): (vcom-1275) Arguments of overloaded "or" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(169): Cannot drive signal "resultado" from procedure "andS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(169): (vcom-1275) Arguments of overloaded "and" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(179): Cannot drive signal "resultado" from procedure "notS".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(189): Cannot drive signal "resultado" from procedure "norS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(189): (vcom-1275) Arguments of overloaded "nor" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(199): Cannot drive signal "resultado" from procedure "nandS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(199): (vcom-1275) Arguments of overloaded "nand" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(209): Cannot drive signal "resultado" from procedure "xorS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(209): (vcom-1275) Arguments of overloaded "xor" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(219): Cannot drive signal "resultado" from procedure "xnorS".
+# ** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(219): (vcom-1275) Arguments of overloaded "xnor" operator are not the same length (16 vs. 8).
+# 
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(229): Cannot drive signal "resultado" from procedure "cDerS".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(239): Cannot drive signal "resultado" from procedure "cIzqS".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(249): Cannot drive signal "resultado" from procedure "ifS".
+# ** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(256): VHDL Compiler exiting
+# ** Error: c:/altera/12.1/modelsim_ase/win32aloem/vcom failed.
+# Error in macro ./UnidadControl_run_msim_rtl_vhdl.do line 8
+# c:/altera/12.1/modelsim_ase/win32aloem/vcom failed.
+#     while executing
+# "vcom -93 -work work {C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd}"

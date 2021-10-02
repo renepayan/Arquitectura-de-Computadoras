@@ -1,0 +1,8 @@
+# Compile of UnidadControl.vhd failed with 5 errors.
+# Compile of UnidadControl.vhd failed with 5 errors.
+# Compile of ALU_PACKAGE.vhd failed with 7 errors.
+# Compile of CARACTERES_ESPECIALES_REVD.vhd was successful.
+# Compile of COMANDOS_LCD_REVD.vhd was successful.
+# Compile of lcd_controller.vhd was successful.
+# Compile of PROCESADOR_LCD_REVD.vhd was successful.
+# 6 compiles, 2 failed with 12 errors. 

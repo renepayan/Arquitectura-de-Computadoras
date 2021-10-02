@@ -1,0 +1,180 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\aresu\Documents\Arquitectura\Practica1\simulation\modelsim
+Palu_package
+Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+w1617079333
+Z4 dC:\Users\aresu\Documents\Arquitectura\Practica1\simulation\modelsim
+8C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd
+FC:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd
+l0
+L18
+VXd<4oNBO15zPZ6bVNfFP60
+Z5 OV;C;10.1b;51
+32
+b1
+Z6 o-work work -2002 -explicit -O0
+Z7 tExplicit 1
+!s100 LM;f>B>GYlPLLj<B@g<O:0
+!i10b 1
+!s108 1632961276.418000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd|
+!s107 C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd|
+Ecaracteres_especiales_revd
+Z8 w1617079809
+R2
+R3
+R4
+Z9 8C:/Users/aresu/Documents/Arquitectura/Practica1/CARACTERES_ESPECIALES_REVD.vhd
+Z10 FC:/Users/aresu/Documents/Arquitectura/Practica1/CARACTERES_ESPECIALES_REVD.vhd
+l0
+L4
+VG?K=ih76lVG?MTfdRVIMF0
+R5
+32
+Z11 !s108 1632961276.583000
+Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/aresu/Documents/Arquitectura/Practica1/CARACTERES_ESPECIALES_REVD.vhd|
+Z13 !s107 C:/Users/aresu/Documents/Arquitectura/Practica1/CARACTERES_ESPECIALES_REVD.vhd|
+R6
+R7
+!s100 ?RemDS:C=ABKJ]I`cjzDF0
+!i10b 1
+Abehavioral
+R2
+R3
+DEx4 work 26 caracteres_especiales_revd 0 22 G?K=ih76lVG?MTfdRVIMF0
+l23
+L12
+Vo2;2_lB[KU<mme<Wz<zUQ3
+R5
+32
+R11
+R12
+R13
+R6
+R7
+!s100 VVAT_QR`5K`NkZnmk=?[H0
+!i10b 1
+Pcomandos_lcd_revd
+Z14 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
+Z15 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
+R1
+R2
+R3
+Z16 w1617079771
+R4
+Z17 8C:/Users/aresu/Documents/Arquitectura/Practica1/COMANDOS_LCD_REVD.vhd
+Z18 FC:/Users/aresu/Documents/Arquitectura/Practica1/COMANDOS_LCD_REVD.vhd
+l0
+L10
+V`7=>a?R@7Ia2jz@=52z@_2
+R5
+32
+b1
+Z19 !s108 1632961276.739000
+Z20 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/aresu/Documents/Arquitectura/Practica1/COMANDOS_LCD_REVD.vhd|
+Z21 !s107 C:/Users/aresu/Documents/Arquitectura/Practica1/COMANDOS_LCD_REVD.vhd|
+R6
+R7
+!s100 l@zKaa]8JRNIgEM_gZfdl3
+!i10b 1
+Bbody
+DPx4 work 17 comandos_lcd_revd 0 22 `7=>a?R@7Ia2jz@=52z@_2
+R14
+R15
+R1
+R2
+R3
+l0
+L46
+Vo1`adh7=feF@jT0EK72oz0
+R5
+32
+R19
+R20
+R21
+R6
+R7
+nbody
+!s100 AG3Yae^V9R@]ioc`5>N892
+!i10b 1
+Elcd_controller
+Z22 w1616711254
+R2
+R3
+R4
+Z23 8C:/Users/aresu/Documents/Arquitectura/Practica1/lcd_controller.vhd
+Z24 FC:/Users/aresu/Documents/Arquitectura/Practica1/lcd_controller.vhd
+l0
+L29
+VMflPNCYGABH8IgU][Rl5S3
+R5
+32
+Z25 !s108 1632961276.925000
+Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/aresu/Documents/Arquitectura/Practica1/lcd_controller.vhd|
+Z27 !s107 C:/Users/aresu/Documents/Arquitectura/Practica1/lcd_controller.vhd|
+R6
+R7
+!s100 ZQV98YFhglK5FJZVPaP5o3
+!i10b 1
+Acontroller
+R2
+R3
+DEx4 work 14 lcd_controller 0 22 MflPNCYGABH8IgU][Rl5S3
+l52
+L49
+VB5HNlnXObjO7Mi?0]=ki72
+R5
+32
+R25
+R26
+R27
+R6
+R7
+!s100 D[8j90;WE7Fb0mHW93WAm1
+!i10b 1
+Eprocesador_lcd_revd
+Z28 w1617079788
+R14
+R15
+R1
+R2
+R3
+R4
+Z29 8C:/Users/aresu/Documents/Arquitectura/Practica1/PROCESADOR_LCD_REVD.vhd
+Z30 FC:/Users/aresu/Documents/Arquitectura/Practica1/PROCESADOR_LCD_REVD.vhd
+l0
+L10
+V[EfPC?ZBR7?QI6TKB6WNW3
+!s100 hSlL;b^VB8dmCPQX8IkBd3
+R5
+32
+!i10b 1
+Z31 !s108 1632961277.068000
+Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/Users/aresu/Documents/Arquitectura/Practica1/PROCESADOR_LCD_REVD.vhd|
+Z33 !s107 C:/Users/aresu/Documents/Arquitectura/Practica1/PROCESADOR_LCD_REVD.vhd|
+R6
+R7
+Abehavioral
+R14
+R15
+R1
+R2
+R3
+DEx4 work 19 procesador_lcd_revd 0 22 [EfPC?ZBR7?QI6TKB6WNW3
+l55
+L31
+VFbe=lGKea=Z6WG7CV=]_43
+!s100 H=4naA8jQXbnR>He:9F;<3
+R5
+32
+!i10b 1
+R31
+R32
+R33
+R6
+R7

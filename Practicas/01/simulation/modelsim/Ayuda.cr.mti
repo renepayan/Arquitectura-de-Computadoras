@@ -1,0 +1,95 @@
+C:/Users/aresu/Documents/Arquitectura/Practica1/PROCESADOR_LCD_REVD.vhd {1 {vcom -work work -2002 -explicit C:/Users/aresu/Documents/Arquitectura/Practica1/PROCESADOR_LCD_REVD.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling entity PROCESADOR_LCD_REVD
+-- Compiling architecture Behavioral of PROCESADOR_LCD_REVD
+
+} {} {}} C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd {0 {vcom -work work -2002 -explicit C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling package ALU_PACKAGE
+-- Compiling package body ALU_PACKAGE
+-- Loading package ALU_PACKAGE
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(119): Cannot drive signal "resultado" from procedure "suma".
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(129): Cannot drive signal "resultado" from procedure "res".
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(139): Cannot drive signal "resultado" from procedure "multi".
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(149): Cannot drive signal "resultado" from procedure "divi".
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(159): Cannot drive signal "resultado" from procedure "orS".
+** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(159): (vcom-1275) Arguments of overloaded "or" operator are not the same length (16 vs. 8).
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(169): Cannot drive signal "resultado" from procedure "andS".
+** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(169): (vcom-1275) Arguments of overloaded "and" operator are not the same length (16 vs. 8).
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(179): Cannot drive signal "resultado" from procedure "notS".
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(189): Cannot drive signal "resultado" from procedure "norS".
+** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(189): (vcom-1275) Arguments of overloaded "nor" operator are not the same length (16 vs. 8).
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(199): Cannot drive signal "resultado" from procedure "nandS".
+** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(199): (vcom-1275) Arguments of overloaded "nand" operator are not the same length (16 vs. 8).
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(209): Cannot drive signal "resultado" from procedure "xorS".
+** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(209): (vcom-1275) Arguments of overloaded "xor" operator are not the same length (16 vs. 8).
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(219): Cannot drive signal "resultado" from procedure "xnorS".
+** Warning: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(219): (vcom-1275) Arguments of overloaded "xnor" operator are not the same length (16 vs. 8).
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(229): Cannot drive signal "resultado" from procedure "cDerS".
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(239): Cannot drive signal "resultado" from procedure "cIzqS".
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(249): Cannot drive signal "resultado" from procedure "ifS".
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/ALU_PACKAGE.vhd(256): VHDL Compiler exiting
+
+} {10.0 15.0 17.0 18.0 20.0 22.0 24.0 25.0 27.0 28.0 30.0 31.0 33.0 37.0} {}} C:/Users/aresu/Documents/Arquitectura/Practica1/lcd_controller.vhd {1 {vcom -work work -2002 -explicit C:/Users/aresu/Documents/Arquitectura/Practica1/lcd_controller.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity lcd_controller
+-- Compiling architecture controller of lcd_controller
+
+} {} {}} C:/Users/aresu/Documents/Arquitectura/Practica1/COMANDOS_LCD_REVD.vhd {1 {vcom -work work -2002 -explicit C:/Users/aresu/Documents/Arquitectura/Practica1/COMANDOS_LCD_REVD.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Compiling package COMANDOS_LCD_REVD
+-- Compiling package body COMANDOS_LCD_REVD
+-- Loading package COMANDOS_LCD_REVD
+
+} {} {}} C:/Users/aresu/Documents/Arquitectura/Practica1/CARACTERES_ESPECIALES_REVD.vhd {1 {vcom -work work -2002 -explicit C:/Users/aresu/Documents/Arquitectura/Practica1/CARACTERES_ESPECIALES_REVD.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity CARACTERES_ESPECIALES_REVD
+-- Compiling architecture Behavioral of CARACTERES_ESPECIALES_REVD
+
+} {} {}} C:/Users/aresu/Documents/Arquitectura/Practica1/UnidadControl.vhd {0 {vcom -work work -2002 -explicit C:/Users/aresu/Documents/Arquitectura/Practica1/UnidadControl.vhd
+Model Technology ModelSim ALTERA vcom 10.1b Compiler 2012.04 Apr 27 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+** Error: (vcom-11) Could not find work.alu_package.
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/UnidadControl.vhd(16): (vcom-1195) Cannot find expanded name "work.ALU_PACKAGE".
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/UnidadControl.vhd(16): Unknown expanded name.
+** Error: (vcom-11) Could not find work.comandos_lcd_revd.
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/UnidadControl.vhd(17): (vcom-1195) Cannot find expanded name "work.COMANDOS_LCD_REVD".
+
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/UnidadControl.vhd(17): Unknown expanded name.
+** Error: C:/Users/aresu/Documents/Arquitectura/Practica1/UnidadControl.vhd(19): VHDL Compiler exiting
+
+} {7.0 8.0 9.0 10.0 11.0 13.0 14.0 15.0 16.0 18.0} {}}

@@ -1,0 +1,26 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\Users\payan\Desktop\clase28\simulation\modelsim
+Palu_package
+Z1 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
+Z2 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z3 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+w1617079333
+Z4 dC:\Users\payan\Desktop\clase28\simulation\modelsim
+8C:/Users/payan/Desktop/clase28/ALU_PACKAGE.vhd
+FC:/Users/payan/Desktop/clase28/ALU_PACKAGE.vhd
+l0
+L18
+V9j0NNKgAme:5nWN@Oz_nA0
+!s100 LM;f>B>GYlPLLj<B@g<O:0
+Z5 OV;C;10.1b;51
+31
+b1
+!i10b 1
+!s108 1632960928.776000
+!s90 -reportprogress|300|-93|-work|work|C:/Users/payan/Desktop/clase28/ALU_PACKAGE.vhd|
+!s107 C:/Users/payan/Desktop/clase28/ALU_PACKAGE.vhd|
+o-93 -work work -O0
+Z6 tExplicit 1

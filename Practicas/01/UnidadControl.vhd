@@ -14,6 +14,8 @@ use ieee.numeric_std.all;
 use work.ALU_PACKAGE.all;
 USE WORK.COMANDOS_LCD_REVD.ALL;
 use work.bcd_7seg.all;
+use work.UnidadAritmeticaLogica;
+use work.Util;
 
 entity UnidadControl is
 	GENERIC(
@@ -22,23 +24,24 @@ entity UnidadControl is
 	PORT(
 		-----------------------------------------------------------
 		------------------PUERTOS DEL LCD--------------------------
-			RS 		  		  : OUT STD_LOGIC;								--  Bandera de comando y datos 
-			RW		  		  : OUT STD_LOGIC;								--  Bandera de lectura y escritura
-			ENA 	  		  : OUT STD_LOGIC;								--  Control de activado
-			DATA_LCD 		  : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);			--  Bus de datos
-			LCD_ON		  	  : OUT std_LOGIC;								--	Encender
+			RS 		  		  : OUT STD_LOGIC;								   --  Bandera de comando y datos 
+			RW		  		     : OUT STD_LOGIC;								   --  Bandera de lectura y escritura
+			ENA 	  		     : OUT STD_LOGIC;								   --  Control de activado
+			DATA_LCD 		  : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);	  	   --  Bus de datos
+			LCD_ON		  	  : OUT std_LOGIC;								   --	 Encender
 		-----------------------------------------------------
 		-----------------------------------------------------
 			  
 			  
 		-----------------------------------------------------------
 		--------------PUERTOS DEL DISPLAY DE 7 SEGMENTOS-----------
+			DYSPLAY7S		  : OUT std_LOGIC_VECTOR(48 downto 0);			-- Todos los display de 7 segmentos			
 			ACUM17SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida del acumulador al 7 segmentos
 			ACUM27SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida del acumulador al 7 segmentos
 			ACUM37SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida del acumulador al 7 segmentos
 			ACUM47SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida del acumulador al 7 segmentos			
 			PC17SEG		  	  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos
-			PC27SEG		      : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos			
+			PC27SEG		     : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos			
 			INST17SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos
 			INST27SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos
 		-----------------------------------------------------------
@@ -46,11 +49,11 @@ entity UnidadControl is
 		
 		-----------------------------------------------------------
 		--------------PUERTOS DE LA UNIDAD DE  CONTROL-------------	
-			CLK      		  : IN std_logic;                               --  Reloj
-			clr				  : IN std_logic;								--  Limpiar todo			
-			exe         	  : IN std_logic;                               --  Boton de ejecucion
-			ent_datos   	  : IN std_logic_vector(7 downto 0);            --  Switches de datos
-			ent_inst    	  : IN std_logic_vector(4 downto 0)             --  Switches de instrucciones       
+			CLK      		  : IN std_logic;                            --  Reloj
+			clr				  : IN std_logic;										--  Limpiar todo			
+			exe         	  : IN std_logic;                            --  Boton de ejecucion
+			Entrada_Datos   	  : IN std_logic_vector(7 downto 0);         --  Switches de datos
+			Entrada_Instruccion : IN std_logic_vector(4 downto 0)          --  Switches de instrucciones       
 		----------------------------------------------------------
 		-----------------------------------------------------------
 	);
@@ -105,7 +108,7 @@ CONSTANT CHAR5 : INTEGER := 5;																--
 CONSTANT CHAR6 : INTEGER := 6;																--
 CONSTANT CHAR7 : INTEGER := 7;																--
 CONSTANT CHAR8 : INTEGER := 8;																--
-																										--
+type INT_ARRAY is array (integer range <>) of integer;																										--
 type ram is array (0 to  NUM_INSTRUCCIONES) of std_logic_vector(8 downto 0); 	--
 signal INST : ram := (others => (others => '0'));										--
 																										--
@@ -123,9 +126,18 @@ signal dir_mem 		  : integer range 0 to NUM_INSTRUCCIONES := 0;				--
 ---------------------------AGREGA TUS SEÑALES AQUÍ------------------------------
 
 		signal AX   : std_logic_vector(15 downto 0) := (others => '0');   --  Acumulador
-		signal PC   : unsigned(7 downto 0)          := (others => '0');   --  Contador de programa
-		signal IX   : std_logic_vector(12 downto 0) := (others => '0');   --  Indice
+		signal PC   : unsigned(7 downto 0)          := (others => '0');   		--  Contador de programa
+		signal IX   : std_logic_vector(12 downto 0) := (others => '0');   		 --  Indice
 		
+-----Señales para resultado
+signal Acumulador 			: std_logic_vector(15 downto 0) := (others => '0'); -- Acumulador (Resultado)
+signal Contador   			: std_logic_vector(07 downto 0) := (others => '0'); -- Contador de operaciones
+signal Indice    				: std_logic_vector(12 downto 0) := (others => '0'); -- Indice en memoria
+
+-----Señales para impresion
+signal Numero_Instruccion 	: std_logic_vector(01 downto 0) := (others => '0'); -- Id de la instruccion
+signal Nombre_Instruccion  : INT_ARRAY(03 downto 0) := (others => '0'); 		 -- Iniciales de la instruccion
+
         signal INSD  : integer;
         signal INSU  : integer;
 		  
@@ -173,15 +185,18 @@ VECTOR_MEM <= INST(DIR_MEM);											 --
 
 -------------------------------------------------------------------
 --------------------ESCRIBE TU CÓDIGO DE VHDL----------------------	
-	UC : 	process (clk,clr,exe,ent_datos,ent_inst)
-			begin
-				LCD_ON<='1';
-				if (clr = '0') then        --  Clear On		
-					AX <= "0000000000000000";   -- Limpia el acumulador de 16 bits
-					PC <= "00000000";           -- El contador de programa
-					IX <= "0000000000000";      -- El Indice
-				elsif (clk'event and clk = '1') then 
-					if (exe = '0') then -- Fue presionado el boton de ejecucion
+	UC : 	process (clk,clr,exe,ent_datos,ent_inst) begin			
+		LCD_ON<='1';
+		if (clr = '0') then        	 -- Se tiene que hacer limpieza de todo
+			regresarDefault(Acumulador Contador, Indice);			
+		elsif (clk'event and clk = '1') then 
+			if (exe = '0') then -- Fue presionado el boton de ejecucion			
+				obtenerInstruccion(Numero_Instruccion, Nombre_Instruccion);
+				menuOperaciones(Entrada_Instruccion, Acumulador, Indice);
+				mostrarResultado(Entrada, Contador, Numero_Instruccion, Nombre_Instruccion);				
+				aumentarContador(Contador);				
+			end if;
+		end if;
 						case ent_inst is -- Set de instrucciones
 							when "00000" => 	-- Limpiar el acumulador
                         AX <= "0000000000000000"; 

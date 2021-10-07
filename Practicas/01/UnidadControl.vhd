@@ -34,23 +34,15 @@ entity UnidadControl is
 			  
 		-----------------------------------------------------------
 		--------------PUERTOS DEL DISPLAY DE 7 SEGMENTOS-----------
-			DYSPLAY7S		  : OUT std_LOGIC_VECTOR(48 downto 0);			-- Todos los display de 7 segmentos			
-			ACUM17SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida del acumulador al 7 segmentos
-			ACUM27SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida del acumulador al 7 segmentos
-			ACUM37SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida del acumulador al 7 segmentos
-			ACUM47SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida del acumulador al 7 segmentos			
-			PC17SEG		  	  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos
-			PC27SEG		     : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos			
-			INST17SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos
-			INST27SEG		  : OUT std_LOGIC_VECTOR(6 downto 0);			-- Salida de la instruccion al 7 segmentos
+			Display_7s		  : OUT std_LOGIC_VECTOR(55 downto 0);			-- Todos los display de 7 segmentos			
 		-----------------------------------------------------------
 		-----------------------------------------------------------
 		
 		-----------------------------------------------------------
 		--------------PUERTOS DE LA UNIDAD DE  CONTROL-------------	
-			CLK      		  : IN std_logic;                            --  Reloj
-			clr				  : IN std_logic;										--  Limpiar todo			
-			exe         	  : IN std_logic;                            --  Boton de ejecucion
+			CLK      		     : IN std_logic;                            --  Reloj
+			clr				     : IN std_logic;										--  Limpiar todo			
+			exe         	  	  : IN std_logic;                            --  Boton de ejecucion
 			Entrada_Datos   	  : IN std_logic_vector(7 downto 0);         --  Switches de datos
 			Entrada_Instruccion : IN std_logic_vector(4 downto 0)          --  Switches de instrucciones       
 		----------------------------------------------------------
@@ -58,6 +50,22 @@ entity UnidadControl is
 	);
 end entity;
 architecture control of UnidadControl is	
+	------------------------------------------------------------------------------
+	----------------------Señales para resultado----------------------------------
+	signal Acumulador 			: std_logic_vector(15 downto 0) := (others => '0'); -- Acumulador (Resultado)
+	signal Contador   			: unsigned(7 downto 0)         := (others => '0');  -- Contador de operaciones
+	signal Indice    				: std_logic_vector(12 downto 0) := (others => '0'); -- Indice en memoria
+	------------------------------------------------------------------------------
+	------------------------------------------------------------------------------
+	
+	------------------------------------------------------------------------------
+	----------------------Señales para la impresion-------------------------------
+	signal Numero_Instruccion 	: INT_ARRAY(01 downto 0); 		 -- Id de la instruccion
+	signal Nombre_Instruccion  : INT_ARRAY(03 downto 0); 		 -- Iniciales de la instruccion
+	signal Auxiliar  				: std_logic_vector(3 downto 0);-- Auxiliar para la conversion a BCD
+	------------------------------------------------------------------------------
+	------------------------------------------------------------------------------
+	
 	function funcBitToInteger (bitAX : std_logic) return integer is begin
         if (bitAX = '1') then
             return 1;
@@ -128,14 +136,9 @@ signal dir_mem 		  : integer range 0 to NUM_INSTRUCCIONES := 0;				--
 		signal PC   : unsigned(7 downto 0)          := (others => '0');   		--  Contador de programa
 		signal IX   : std_logic_vector(12 downto 0) := (others => '0');   		 --  Indice
 		
------Señales para resultado
-signal Acumulador 			: std_logic_vector(15 downto 0) := (others => '0'); -- Acumulador (Resultado)
-signal Contador   			: unsigned(07 downto 0)         := (others => '0'); -- Contador de operaciones
-signal Indice    				: std_logic_vector(12 downto 0) := (others => '0'); -- Indice en memoria
 
------Señales para impresion
-signal Numero_Instruccion 	: INT_ARRAY(01 downto 0); 		 -- Id de la instruccion
-signal Nombre_Instruccion  : INT_ARRAY(03 downto 0); 		 -- Iniciales de la instruccion
+
+
 
         signal INSD  : integer;
         signal INSU  : integer;
@@ -145,7 +148,7 @@ signal Nombre_Instruccion  : INT_ARRAY(03 downto 0); 		 -- Iniciales de la instr
 		signal INS3 : integer;
 		signal INS4 : integer;
 		  
-		signal aux  : std_LOGIC_VECTOR(3 downto 0);
+		
 		signal aux2 : std_logic_vector(7 downto 0);
         signal RESULT : std_logic_vector(15 downto 0)  := (others => '0');
 		
@@ -187,36 +190,16 @@ VECTOR_MEM <= INST(DIR_MEM);											 --
 UC : 	process (clk,clr,exe,Entrada_Datos,Entrada_Instruccion) begin			
 		LCD_ON<='1';
 		if (clr = '0') then        	 -- Se tiene que hacer limpieza de todo
-			--regresarDefault(Acumulador Contador, Indice);			
+			Contador<=Contador+1;
+			regresarDefault(Acumulador, Contador, Indice);			
 		elsif (clk'event and clk = '1') then 
 			if (exe = '0') then -- Fue presionado el boton de ejecucion			
-				--obtenerInstruccion(Entrada_Instruccion, Numero_Instruccion, Nombre_Instruccion);
-				--menuOperaciones(Entrada_Instruccion, Acumulador, Indice);
-				--mostrarResultado(Entrada, Contador, Numero_Instruccion, Nombre_Instruccion);				
-				--aumentarContador(Contador);				
+				obtenerInstruccion(Entrada_Instruccion, Numero_Instruccion, Nombre_Instruccion);
+				menuOperaciones(Entrada_Instruccion, Entrada_Datos, Acumulador, Indice);
+				mostrarResultado(Display_7s, Acumulador, Contador, Nombre_Instruccion, Numero_Instruccion, Indice, Auxiliar);				
+				aumentarContador(Contador);				
 			end if;
 		end if;					
-						
-						
-						--bcd_conv(AX(15 downto 12),ACUM17SEG);
-						--bcd_conv(AX(11 downto 8),ACUM27SEG);
-						--bcd_conv(AX(7 downto 4),ACUM37SEG);
-						--bcd_conv(AX(3 downto 0),ACUM47SEG);
-						
-						--aux2<=STD_LOGIC_VECTOR(PC);
-						--bcd_conv(aux2(7 downto 4),PC17SEG);
-						--bcd_conv(aux2(3 downto 0),PC27SEG);
-						
-						--aux<=std_LOGIC_VECTOR(to_unsigned(INSU,aux'length));
-						--bcd_conv(aux,INST17SEG);
-						--aux<=std_LOGIC_VECTOR(to_unsigned(INSD,aux'length));
-						--bcd_conv(aux,INST27SEG);
-						
-						--else						
-					--end if; 
-        
-				--end if; --Fin del clk
-    
 end process UC;
 
 -------------------------------------------------------------------

@@ -1,0 +1,16 @@
+--          INSTITUTO POLITECNICO NACIONAL 
+--           Escuela Superior de Cómputo
+--           Arquitectura de Computadoras
+--
+--           Juarez Martinez Ares Ulises
+--           	  Payán Téllez René
+--
+--     Practica 1 Arquitectura Basica de 8 bits
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+package Util is
+	procedure regresarDefault();
+	procedure mostrarResultado();	
+end package

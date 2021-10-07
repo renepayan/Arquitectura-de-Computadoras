@@ -1,5 +1,5 @@
 Analysis & Synthesis report for UnidadControl
-Wed Oct 06 21:26:18 2021
+Thu Oct 07 04:01:13 2021
 Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -10,7 +10,19 @@ Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Messages
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Registers Removed During Synthesis
+  9. Removed Registers Triggering Further Register Optimizations
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Parameter Settings for User Entity Instance: Top-level Entity: |UnidadControl
+ 14. Parameter Settings for User Entity Instance: PROCESADOR_LCD_REVD:u1
+ 15. Port Connectivity Checks: "PROCESADOR_LCD_REVD:u1"
+ 16. Elapsed Time Per Partition
+ 17. Analysis & Synthesis Messages
 
 
 
@@ -36,20 +48,20 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Wed Oct 06 21:26:18 2021        ;
+; Analysis & Synthesis Status        ; Successful - Thu Oct 07 04:01:13 2021    ;
 ; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; UnidadControl                            ;
 ; Top-level Entity Name              ; UnidadControl                            ;
 ; Family                             ; Cyclone IV E                             ;
-; Total logic elements               ; N/A until Partition Merge                ;
-;     Total combinational functions  ; N/A until Partition Merge                ;
-;     Dedicated logic registers      ; N/A until Partition Merge                ;
-; Total registers                    ; N/A until Partition Merge                ;
-; Total pins                         ; N/A until Partition Merge                ;
-; Total virtual pins                 ; N/A until Partition Merge                ;
-; Total memory bits                  ; N/A until Partition Merge                ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                ;
-; Total PLLs                         ; N/A until Partition Merge                ;
+; Total logic elements               ; 238                                      ;
+;     Total combinational functions  ; 227                                      ;
+;     Dedicated logic registers      ; 104                                      ;
+; Total registers                    ; 104                                      ;
+; Total pins                         ; 84                                       ;
+; Total virtual pins                 ; 0                                        ;
+; Total memory bits                  ; 0                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
+; Total PLLs                         ; 0                                        ;
 +------------------------------------+------------------------------------------+
 
 
@@ -161,13 +173,240 @@ applicable agreement for further details.
 +----------------------------+-------------+
 
 
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                           ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                    ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
+; UnidadAritmeticaLogica.vhd       ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/UnidadAritmeticaLogica.vhd     ;         ;
+; Util.vhd                         ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd                       ;         ;
+; bcd_7seg.vhd                     ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/bcd_7seg.vhd                   ;         ;
+; UnidadControl.vhd                ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/UnidadControl.vhd              ;         ;
+; ALU_PACKAGE.vhd                  ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/ALU_PACKAGE.vhd                ;         ;
+; COMANDOS_LCD_REVD.vhd            ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/COMANDOS_LCD_REVD.vhd          ;         ;
+; PROCESADOR_LCD_REVD.vhd          ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/PROCESADOR_LCD_REVD.vhd        ;         ;
+; CARACTERES_ESPECIALES_REVD.vhd   ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/CARACTERES_ESPECIALES_REVD.vhd ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
+
+
++-----------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary         ;
++---------------------------------------------+-------+
+; Resource                                    ; Usage ;
++---------------------------------------------+-------+
+; Estimated Total logic elements              ; 238   ;
+;                                             ;       ;
+; Total combinational functions               ; 227   ;
+; Logic element usage by number of LUT inputs ;       ;
+;     -- 4 input functions                    ; 151   ;
+;     -- 3 input functions                    ; 18    ;
+;     -- <=2 input functions                  ; 58    ;
+;                                             ;       ;
+; Logic elements by mode                      ;       ;
+;     -- normal mode                          ; 185   ;
+;     -- arithmetic mode                      ; 42    ;
+;                                             ;       ;
+; Total registers                             ; 104   ;
+;     -- Dedicated logic registers            ; 104   ;
+;     -- I/O registers                        ; 0     ;
+;                                             ;       ;
+; I/O pins                                    ; 84    ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out                             ; 104   ;
+; Total fan-out                               ; 1237  ;
+; Average fan-out                             ; 2.48  ;
++---------------------------------------------+-------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                            ;
++-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------+--------------+
+; Compilation Hierarchy Node  ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                   ; Library Name ;
++-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------+--------------+
+; |UnidadControl              ; 227 (35)          ; 104 (44)     ; 0           ; 0            ; 0       ; 0         ; 84   ; 0            ; |UnidadControl                        ;              ;
+;    |PROCESADOR_LCD_REVD:u1| ; 192 (192)         ; 60 (60)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UnidadControl|PROCESADOR_LCD_REVD:u1 ;              ;
++-----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                               ;
++-------------------------------------------------------------+----------------------------------------------------+
+; Register name                                               ; Reason for Removal                                 ;
++-------------------------------------------------------------+----------------------------------------------------+
+; Display_7s[27]~reg0                                         ; Stuck at VCC due to stuck port data_in             ;
+; Display_7s[26]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[25]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[24]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[23]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[22]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[21]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[20]~reg0                                         ; Stuck at VCC due to stuck port data_in             ;
+; Display_7s[19]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[18]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[17]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[16]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[15]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[14]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[13]~reg0                                         ; Stuck at VCC due to stuck port data_in             ;
+; Display_7s[12]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[11]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[10]~reg0                                         ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[9]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[8]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[7]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[6]~reg0                                          ; Stuck at VCC due to stuck port data_in             ;
+; Display_7s[5]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[4]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[3]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[2]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[1]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; Display_7s[0]~reg0                                          ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[1]                        ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[0]   ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[7,17]                     ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[10]  ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[9]                        ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[14]  ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[36]                       ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[11]  ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[16,35]                    ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[15]  ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[23]                       ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[19]  ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[21,22,25..27,30]          ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[20]  ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[29]                       ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[24]  ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[31,33]                    ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[28]  ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[37..39]                   ; Merged with PROCESADOR_LCD_REVD:u1|vec_c_char[34]  ;
+; PROCESADOR_LCD_REVD:u1|vec_ram[1,2,7]                       ; Merged with PROCESADOR_LCD_REVD:u1|vec_ram[0]      ;
+; PROCESADOR_LCD_REVD:u1|vec_l_ram[3..7]                      ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_ram[0]                           ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|dir_mem_s[0..4]                      ; Lost fanout                                        ;
+; PROCESADOR_LCD_REVD:u1|dir_salto_mem[0]                     ; Lost fanout                                        ;
+; PROCESADOR_LCD_REVD:u1|salto                                ; Lost fanout                                        ;
+; PROCESADOR_LCD_REVD:u1|avanzar                              ; Lost fanout                                        ;
+; PROCESADOR_LCD_REVD:u1|dir_salto_mem[1..4]                  ; Lost fanout                                        ;
+; PROCESADOR_LCD_REVD:u1|vec_l_ram[0]                         ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[0,5,10,15,20]             ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_l_ram[1]                         ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[6,11,28]                  ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_l_ram[2]                         ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|data_s[2]                            ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[2,12,32,34]               ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|data_s[3]                            ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[8,18]                     ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_ram[3]                           ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[3,13,14,19,24]            ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_ram[4]                           ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_c_char[4]                        ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|vec_ram[5,6]                         ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|RW                                   ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|ciclo_enable[0..2,4..6,10,11,13..15] ; Stuck at GND due to stuck port data_in             ;
+; PROCESADOR_LCD_REVD:u1|ciclo_enable[12]                     ; Merged with PROCESADOR_LCD_REVD:u1|ciclo_enable[9] ;
+; PROCESADOR_LCD_REVD:u1|ciclo_enable[9]                      ; Merged with PROCESADOR_LCD_REVD:u1|ciclo_enable[8] ;
+; PROCESADOR_LCD_REVD:u1|ciclo_enable[8]                      ; Merged with PROCESADOR_LCD_REVD:u1|ciclo_enable[7] ;
+; PROCESADOR_LCD_REVD:u1|ciclo_enable[7]                      ; Merged with PROCESADOR_LCD_REVD:u1|ciclo_enable[3] ;
+; PROCESADOR_LCD_REVD:u1|data_s[7]                            ; Merged with PROCESADOR_LCD_REVD:u1|data_s[6]       ;
+; PROCESADOR_LCD_REVD:u1|data_s[6]                            ; Merged with PROCESADOR_LCD_REVD:u1|data_s[5]       ;
+; PROCESADOR_LCD_REVD:u1|data_s[5]                            ; Merged with PROCESADOR_LCD_REVD:u1|data_s[4]       ;
+; PROCESADOR_LCD_REVD:u1|data_s[4]                            ; Merged with PROCESADOR_LCD_REVD:u1|data_s[1]       ;
+; PROCESADOR_LCD_REVD:u1|data_s[1]                            ; Merged with PROCESADOR_LCD_REVD:u1|data_s[0]       ;
+; Total Number of Removed Registers = 119                     ;                                                    ;
++-------------------------------------------------------------+----------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                                              ;
++-------------------------------------+--------------------+-------------------------------------------------------------------------------+
+; Register name                       ; Reason for Removal ; Registers Removed due to This Register                                        ;
++-------------------------------------+--------------------+-------------------------------------------------------------------------------+
+; PROCESADOR_LCD_REVD:u1|dir_mem_s[0] ; Lost Fanouts       ; PROCESADOR_LCD_REVD:u1|dir_mem_s[4], PROCESADOR_LCD_REVD:u1|dir_salto_mem[0], ;
+;                                     ;                    ; PROCESADOR_LCD_REVD:u1|salto, PROCESADOR_LCD_REVD:u1|avanzar,                 ;
+;                                     ;                    ; PROCESADOR_LCD_REVD:u1|dir_salto_mem[4]                                       ;
+; PROCESADOR_LCD_REVD:u1|dir_mem_s[1] ; Lost Fanouts       ; PROCESADOR_LCD_REVD:u1|dir_salto_mem[1]                                       ;
+; PROCESADOR_LCD_REVD:u1|dir_mem_s[2] ; Lost Fanouts       ; PROCESADOR_LCD_REVD:u1|dir_salto_mem[2]                                       ;
+; PROCESADOR_LCD_REVD:u1|dir_mem_s[3] ; Lost Fanouts       ; PROCESADOR_LCD_REVD:u1|dir_salto_mem[3]                                       ;
++-------------------------------------+--------------------+-------------------------------------------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 104   ;
+; Number of registers using Synchronous Clear  ; 40    ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 8     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 91    ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; Numero_Instruccion[1][0]               ; 1       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+; 6:1                ; 2 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |UnidadControl|PROCESADOR_LCD_REVD:u1|edo_enable[1]    ;
+; 128:1              ; 2 bits    ; 170 LEs       ; 12 LEs               ; 158 LEs                ; Yes        ; |UnidadControl|PROCESADOR_LCD_REVD:u1|DATA[2]          ;
+; 128:1              ; 18 bits   ; 1530 LEs      ; 162 LEs              ; 1368 LEs               ; Yes        ; |UnidadControl|PROCESADOR_LCD_REVD:u1|ciclo_enable[15] ;
+; 128:1              ; 6 bits    ; 510 LEs       ; 66 LEs               ; 444 LEs                ; Yes        ; |UnidadControl|PROCESADOR_LCD_REVD:u1|DATA[1]          ;
+; 13:1               ; 22 bits   ; 176 LEs       ; 22 LEs               ; 154 LEs                ; Yes        ; |UnidadControl|PROCESADOR_LCD_REVD:u1|conta_delay[0]   ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |UnidadControl ;
++----------------+----------+---------------------------------------------------+
+; Parameter Name ; Value    ; Type                                              ;
++----------------+----------+---------------------------------------------------+
+; FPGA_CLK       ; 50000000 ; Signed Integer                                    ;
++----------------+----------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: PROCESADOR_LCD_REVD:u1 ;
++----------------+----------+-----------------------------------------+
+; Parameter Name ; Value    ; Type                                    ;
++----------------+----------+-----------------------------------------+
+; fpga_clk       ; 50000000 ; Signed Integer                          ;
+; num_inst       ; 28       ; Signed Integer                          ;
++----------------+----------+-----------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "PROCESADOR_LCD_REVD:u1"                                                               ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; bd_lcd ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:01     ;
++----------------+--------------+
+
+
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Wed Oct 06 21:26:16 2021
+    Info: Processing started: Thu Oct 07 04:01:10 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off UnidadControl -c UnidadControl
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
 Info (12021): Found 2 design units, including 0 entities, in source file unidadaritmeticalogica.vhd
@@ -195,12 +434,84 @@ Info (12021): Found 2 design units, including 1 entities, in source file caracte
     Info (12022): Found design unit 1: CARACTERES_ESPECIALES_REVD-Behavioral
     Info (12023): Found entity 1: CARACTERES_ESPECIALES_REVD
 Info (12127): Elaborating entity "UnidadControl" for the top level hierarchy
-Error (10495): VHDL Subprogram Declaration error at UnidadAritmeticaLogica.vhd(14): declaration of function or procedure "ALU_limpiarAcumulador" must have corresponding Subprogram Body File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/UnidadAritmeticaLogica.vhd Line: 14
-Error (12153): Can't elaborate top-level user hierarchy
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 0 warnings
-    Error: Peak virtual memory: 4623 megabytes
-    Error: Processing ended: Wed Oct 06 21:26:18 2021
-    Error: Elapsed time: 00:00:02
-    Error: Total CPU time (on all processors): 00:00:01
+Warning (10036): Verilog HDL or VHDL warning at UnidadControl.vhd(122): object "blcd" assigned a value but never read
+Warning (10492): VHDL Process Statement warning at UnidadControl.vhd(193): signal "Contador" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10631): VHDL Process Statement warning at UnidadControl.vhd(190): inferring latch(es) for signal or variable "Acumulador", which holds its previous value in one or more paths through the process
+Warning (10631): VHDL Process Statement warning at UnidadControl.vhd(190): inferring latch(es) for signal or variable "Indice", which holds its previous value in one or more paths through the process
+Info (10041): Inferred latch for "Acumulador[0]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[1]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[2]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[3]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[4]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[5]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[6]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[7]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[8]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[9]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[10]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[11]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[12]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[13]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[14]" at UnidadControl.vhd(190)
+Info (10041): Inferred latch for "Acumulador[15]" at UnidadControl.vhd(190)
+Info (12128): Elaborating entity "PROCESADOR_LCD_REVD" for hierarchy "PROCESADOR_LCD_REVD:u1"
+Info (12128): Elaborating entity "CARACTERES_ESPECIALES_REVD" for hierarchy "CARACTERES_ESPECIALES_REVD:U2"
+Info (276014): Found 1 instances of uninferred RAM logic
+    Info (276004): RAM logic "INST" is uninferred due to inappropriate RAM size
+Warning (113028): 3 out of 32 addresses are uninitialized. The Quartus II software will initialize them to "0". There are 1 warnings found, and 1 warnings are reported.
+    Warning (113027): Addresses ranging from 29 to 31 are not initialized
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "RW" is stuck at GND
+    Warning (13410): Pin "LCD_ON" is stuck at VCC
+    Warning (13410): Pin "Display_7s[0]" is stuck at GND
+    Warning (13410): Pin "Display_7s[1]" is stuck at GND
+    Warning (13410): Pin "Display_7s[2]" is stuck at GND
+    Warning (13410): Pin "Display_7s[3]" is stuck at GND
+    Warning (13410): Pin "Display_7s[4]" is stuck at GND
+    Warning (13410): Pin "Display_7s[5]" is stuck at GND
+    Warning (13410): Pin "Display_7s[6]" is stuck at VCC
+    Warning (13410): Pin "Display_7s[7]" is stuck at GND
+    Warning (13410): Pin "Display_7s[8]" is stuck at GND
+    Warning (13410): Pin "Display_7s[9]" is stuck at GND
+    Warning (13410): Pin "Display_7s[10]" is stuck at GND
+    Warning (13410): Pin "Display_7s[11]" is stuck at GND
+    Warning (13410): Pin "Display_7s[12]" is stuck at GND
+    Warning (13410): Pin "Display_7s[13]" is stuck at VCC
+    Warning (13410): Pin "Display_7s[14]" is stuck at GND
+    Warning (13410): Pin "Display_7s[15]" is stuck at GND
+    Warning (13410): Pin "Display_7s[16]" is stuck at GND
+    Warning (13410): Pin "Display_7s[17]" is stuck at GND
+    Warning (13410): Pin "Display_7s[18]" is stuck at GND
+    Warning (13410): Pin "Display_7s[19]" is stuck at GND
+    Warning (13410): Pin "Display_7s[20]" is stuck at VCC
+    Warning (13410): Pin "Display_7s[21]" is stuck at GND
+    Warning (13410): Pin "Display_7s[22]" is stuck at GND
+    Warning (13410): Pin "Display_7s[23]" is stuck at GND
+    Warning (13410): Pin "Display_7s[24]" is stuck at GND
+    Warning (13410): Pin "Display_7s[25]" is stuck at GND
+    Warning (13410): Pin "Display_7s[26]" is stuck at GND
+    Warning (13410): Pin "Display_7s[27]" is stuck at VCC
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 12 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 8 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "Entrada_Datos[0]"
+    Warning (15610): No output dependent on input pin "Entrada_Datos[1]"
+    Warning (15610): No output dependent on input pin "Entrada_Datos[2]"
+    Warning (15610): No output dependent on input pin "Entrada_Datos[3]"
+    Warning (15610): No output dependent on input pin "Entrada_Datos[4]"
+    Warning (15610): No output dependent on input pin "Entrada_Datos[5]"
+    Warning (15610): No output dependent on input pin "Entrada_Datos[6]"
+    Warning (15610): No output dependent on input pin "Entrada_Datos[7]"
+Info (21057): Implemented 330 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 16 input pins
+    Info (21059): Implemented 68 output pins
+    Info (21061): Implemented 246 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 46 warnings
+    Info: Peak virtual memory: 4650 megabytes
+    Info: Processing ended: Thu Oct 07 04:01:13 2021
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:03
 
 

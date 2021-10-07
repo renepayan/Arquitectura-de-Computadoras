@@ -14,8 +14,7 @@ use ieee.numeric_std.all;
 use work.ALU_PACKAGE.all;
 USE WORK.COMANDOS_LCD_REVD.ALL;
 use work.bcd_7seg.all;
-use work.UnidadAritmeticaLogica;
-use work.Util;
+use work.Util.all;
 
 entity UnidadControl is
 	GENERIC(
@@ -131,12 +130,12 @@ signal dir_mem 		  : integer range 0 to NUM_INSTRUCCIONES := 0;				--
 		
 -----Señales para resultado
 signal Acumulador 			: std_logic_vector(15 downto 0) := (others => '0'); -- Acumulador (Resultado)
-signal Contador   			: std_logic_vector(07 downto 0) := (others => '0'); -- Contador de operaciones
+signal Contador   			: unsigned(07 downto 0)         := (others => '0'); -- Contador de operaciones
 signal Indice    				: std_logic_vector(12 downto 0) := (others => '0'); -- Indice en memoria
 
 -----Señales para impresion
-signal Numero_Instruccion 	: std_logic_vector(01 downto 0) := (others => '0'); -- Id de la instruccion
-signal Nombre_Instruccion  : INT_ARRAY(03 downto 0) := (others => '0'); 		 -- Iniciales de la instruccion
+signal Numero_Instruccion 	: INT_ARRAY(01 downto 0); 		 -- Id de la instruccion
+signal Nombre_Instruccion  : INT_ARRAY(03 downto 0); 		 -- Iniciales de la instruccion
 
         signal INSD  : integer;
         signal INSU  : integer;
@@ -185,252 +184,40 @@ VECTOR_MEM <= INST(DIR_MEM);											 --
 
 -------------------------------------------------------------------
 --------------------ESCRIBE TU CÓDIGO DE VHDL----------------------	
-	UC : 	process (clk,clr,exe,ent_datos,ent_inst) begin			
+UC : 	process (clk,clr,exe,Entrada_Datos,Entrada_Instruccion) begin			
 		LCD_ON<='1';
 		if (clr = '0') then        	 -- Se tiene que hacer limpieza de todo
-			regresarDefault(Acumulador Contador, Indice);			
+			--regresarDefault(Acumulador Contador, Indice);			
 		elsif (clk'event and clk = '1') then 
 			if (exe = '0') then -- Fue presionado el boton de ejecucion			
-				obtenerInstruccion(Numero_Instruccion, Nombre_Instruccion);
-				menuOperaciones(Entrada_Instruccion, Acumulador, Indice);
-				mostrarResultado(Entrada, Contador, Numero_Instruccion, Nombre_Instruccion);				
-				aumentarContador(Contador);				
+				--obtenerInstruccion(Entrada_Instruccion, Numero_Instruccion, Nombre_Instruccion);
+				--menuOperaciones(Entrada_Instruccion, Acumulador, Indice);
+				--mostrarResultado(Entrada, Contador, Numero_Instruccion, Nombre_Instruccion);				
+				--aumentarContador(Contador);				
 			end if;
-		end if;
-						case ent_inst is -- Set de instrucciones
-							when "00000" => 	-- Limpiar el acumulador
-                        AX <= "0000000000000000"; 
-                        INSD <= 0 ;
-                        INSU <= 0 ;
-								INS1 <= MC;
-								INS2 <= L;
-								INS3 <= A;
-								INS4 <= N;
-							when "00001" => -- Carga en la parte baja del acumulador
-                        AX(7 downto 0) <= ent_datos; 
-                        INSD <= 0 ;
-                        INSU <= 1 ;
-								INS1 <= MM;
-								INS2 <= O;
-								INS3 <= V;
-								INS4 <= X;
-							when "00010" => -- Carga el registro con una direccion
-								IX(7 downto 0) <= ent_datos; 			
-                        INSD <= 0;
-                        INSU <= 2;
-									
-								INS1 <= MM;
-								INS2 <= O;
-								INS3 <= V;
-								INS4 <= X;
-							when "00011" =>  -- Carga el registro ind con una dir
-								IX (7 downto 0) <= ent_datos; 
-
-                        INSD <= 0;
-                        INSU <= 3; 
-								
-								INS1 <= MM;
-								INS2 <= O;
-								INS3 <= V;
-								INS4 <= V;
-							
-							when "00100" => -- Suma del acumulador con un dato y el resultado se almacena en el acumulador
-								suma(AX(7 downto 0), ent_datos, AX(15 downto 0));
-								INSD <= 0;
-								INSU <= 4;
-								
-								INS1 <= MO;
-								INS2 <= A;
-								INS3 <= D;
-								INS4 <= D;
-							
-							when "00101" => -- Resta del acumulador con un dato y el resultado se almacena en el acumulador
-								res(AX(7 downto 0), ent_datos, AX(15 downto 0));
-								INSD <= 0;
-								INSU <= 5;
-										
-								INS1 <= MAS;
-								INS2 <= U;
-								INS3 <= B;
-								INS4 <= S;
-                        
-							when "00110" => -- Multiplica del acumulador con un dato y el resultado se almacena en el acumulador
-								multi(AX(7 downto 0), ent_datos, AX(15 downto 0));
-								INSD <= 0;
-								INSU <= 6;
-								
-								INS1 <= MM;
-								INS2 <= U;
-								INS3 <= L;
-								INS4 <= T;
-							when "00111" =>  -- Divicion del acumulador con un dato y el resultado se almacena en el acumulador
-								divi(AX(7 downto 0), ent_datos, AX(15 downto 0));
-								INSD <= 0;
-								INSU <= 7;
-								INS1 <= MD;
-								INS2 <= I;
-								INS3 <= V;
-								INS4 <= I;
-							
-							when "01000" => -- OR
-								orS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 0;
-                        INSU <= 8;
-								
-								INS1 <= MO;
-								INS2 <= R;
-								INS3 <= R;
-								INS4 <= R;
-								
-							when "01001" => -- AND
-								andS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 0;
-                        INSU <= 9;
-								
-								INS1 <= MA;
-								INS2 <= N;
-								INS3 <= D;
-								INS4 <= D;
-						
-							when "01010" => -- NOT A 
-								notS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 1;
-                        INSU <= 0;
-								
-								INS1 <= MN;
-								INS2 <= O;
-								INS3 <= T;
-								INS4 <= A;
-							
-							when "01011" => -- NOR 
-								norS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 1;
-                        INSU <= 1;
-								
-								INS1 <= MN;
-								INS2 <= O;
-								INS3 <= R;
-								INS4 <= R;
-							
-							when "01100" => -- NAND 
-								nandS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 1;
-                        INSU <= 2;
-								
-								INS1 <= MN;
-								INS2 <= A;
-								INS3 <= N;
-								INS4 <= D;
-							
-							when "01101" => -- XOR
-								xorS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 1;
-                        INSU <= 3;
-								
-								INS1 <= MX;
-								INS2 <= O;
-								INS3 <= R;
-								INS4 <= R;
-							
-							when "01110" => -- X-NOR
-								xnorS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 1;
-                        INSU <= 4;
-								
-								INS1 <= MX;
-								INS2 <= N;
-								INS3 <= O;
-								INS4 <= R;
-							
-							when "01111" => -- Corrimiento derecha
-								cDerS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 1;
-                        INSU <= 5;
-								
-								INS1 <= MC;
-								INS2 <= O;
-								INS3 <= R;
-								INS4 <= D;
-							when "10000" => -- Corrimiento izquierda
-								cIzqS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 1;
-                        INSU <= 6;
-								
-								INS1 <= MC;
-								INS2 <= O;
-								INS3 <= R;
-								INS4 <= I;
-								
-							when "10001" => -- if-buffer
-								ifS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 1;
-                        INSU <= 7;
-								
-								INS1 <= MI;
-								INS2 <= F;
-								INS3 <= B;
-								INS4 <= U;							
-							when "10010" => --Carga en la parte alta del acumulador
-                        AX(15 downto 8) <= ent_datos; 
-                        INSD <= 1;
-                        INSU <= 8;
-								
-								INS1 <= MC;
-								INS2 <= A;
-								INS3 <= R;
-								INS4 <= A;
-
-							when "10011" => -- Suma y corrimiento a la derecha
-								suma(AX(7 downto 0), ent_datos, AX(15 downto 0));
-								cDerS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-								INSD <= 1;
-								INSU <= 9;
-								
-								INS1 <= MAS;
-								INS2 <= U;
-								INS3 <= Y;
-								INS4 <= D;
-							
-							when "10100" => -- Suma y corrimiento a la izquierda 
-								suma(AX(7 downto 0), ent_datos, AX(15 downto 0));
-								cIzqS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-								INSD <= 2;
-								INSU <= 0;
-								
-								INS1 <= MAS;
-								INS2 <= U;
-								INS3 <= Y;
-								INS4 <= I;
-				
-							when others => -- NOT A
-                        notS(AX(7 downto 0), ent_datos, AX(15 downto 0));
-                        INSD <= 2;
-                        INSU <= 1;
-						end case;
-						RESULT <= AX;
-						PC <= PC + 1;
+		end if;					
 						
 						
-						bcd_conv(AX(15 downto 12),ACUM17SEG);
-						bcd_conv(AX(11 downto 8),ACUM27SEG);
-						bcd_conv(AX(7 downto 4),ACUM37SEG);
-						bcd_conv(AX(3 downto 0),ACUM47SEG);
+						--bcd_conv(AX(15 downto 12),ACUM17SEG);
+						--bcd_conv(AX(11 downto 8),ACUM27SEG);
+						--bcd_conv(AX(7 downto 4),ACUM37SEG);
+						--bcd_conv(AX(3 downto 0),ACUM47SEG);
 						
-						aux2<=STD_LOGIC_VECTOR(PC);
-						bcd_conv(aux2(7 downto 4),PC17SEG);
-						bcd_conv(aux2(3 downto 0),PC27SEG);
+						--aux2<=STD_LOGIC_VECTOR(PC);
+						--bcd_conv(aux2(7 downto 4),PC17SEG);
+						--bcd_conv(aux2(3 downto 0),PC27SEG);
 						
-						aux<=std_LOGIC_VECTOR(to_unsigned(INSU,aux'length));
-						bcd_conv(aux,INST17SEG);
-						aux<=std_LOGIC_VECTOR(to_unsigned(INSD,aux'length));
-						bcd_conv(aux,INST27SEG);
+						--aux<=std_LOGIC_VECTOR(to_unsigned(INSU,aux'length));
+						--bcd_conv(aux,INST17SEG);
+						--aux<=std_LOGIC_VECTOR(to_unsigned(INSD,aux'length));
+						--bcd_conv(aux,INST27SEG);
 						
 						--else						
-					end if; 
+					--end if; 
         
-				end if; --Fin del clk
+				--end if; --Fin del clk
     
-			end process UC;
+end process UC;
 
 -------------------------------------------------------------------
 -------------------------------------------------------------------

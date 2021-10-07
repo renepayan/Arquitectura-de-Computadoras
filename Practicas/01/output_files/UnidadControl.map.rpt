@@ -1,5 +1,5 @@
 Analysis & Synthesis report for UnidadControl
-Tue Oct 05 19:47:57 2021
+Wed Oct 06 21:26:18 2021
 Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Tue Oct 05 19:47:57 2021        ;
+; Analysis & Synthesis Status        ; Failed - Wed Oct 06 21:26:18 2021        ;
 ; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; UnidadControl                            ;
 ; Top-level Entity Name              ; UnidadControl                            ;
@@ -167,25 +167,21 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Tue Oct 05 19:47:54 2021
+    Info: Processing started: Wed Oct 06 21:26:16 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off UnidadControl -c UnidadControl
 Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
-Error (10500): VHDL syntax error at Util.vhd(23) near text ")";  expecting an identifier, or "constant", or "file", or "signal", or "variable" File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 23
-Error (10500): VHDL syntax error at Util.vhd(28) near text "signal";  expecting ";", or ")" File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 28
-Error (10500): VHDL syntax error at Util.vhd(28) near text "inout";  expecting an identifier ("inout" is a reserved keyword), or a string literal File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 28
-Error (10500): VHDL syntax error at Util.vhd(40) near text ")"; mismatched closing parenthesis  File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 40
-Error (10500): VHDL syntax error at Util.vhd(61) near text ")";  expecting ":", or "," File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 61
-Error (10500): VHDL syntax error at Util.vhd(63) near text ")";  expecting ":", or "," File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 63
-Error (10500): VHDL syntax error at Util.vhd(65) near text ")";  expecting ":", or "," File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 65
-Error (10500): VHDL syntax error at Util.vhd(67) near text ")";  expecting ":", or "," File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 67
-Error (10500): VHDL syntax error at Util.vhd(87) near text ")";  expecting ":", or "," File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 87
-Error (10500): VHDL syntax error at Util.vhd(93) near text ")";  expecting ":", or "," File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/Util.vhd Line: 93
-Info (12021): Found 0 design units, including 0 entities, in source file util.vhd
+Info (12021): Found 2 design units, including 0 entities, in source file unidadaritmeticalogica.vhd
+    Info (12022): Found design unit 1: UnidadAritmeticaLogica
+    Info (12022): Found design unit 2: UnidadAritmeticaLogica-body
+Info (12021): Found 2 design units, including 0 entities, in source file util.vhd
+    Info (12022): Found design unit 1: Util
+    Info (12022): Found design unit 2: Util-body
 Info (12021): Found 2 design units, including 0 entities, in source file bcd_7seg.vhd
     Info (12022): Found design unit 1: bcd_7seg
     Info (12022): Found design unit 2: bcd_7seg-body
-Error (10500): VHDL syntax error at UnidadControl.vhd(428) near text "if";  expecting "process" File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/UnidadControl.vhd Line: 428
-Info (12021): Found 0 design units, including 0 entities, in source file unidadcontrol.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file unidadcontrol.vhd
+    Info (12022): Found design unit 1: UnidadControl-control
+    Info (12023): Found entity 1: UnidadControl
 Info (12021): Found 2 design units, including 0 entities, in source file alu_package.vhd
     Info (12022): Found design unit 1: ALU_PACKAGE
     Info (12022): Found design unit 2: ALU_PACKAGE-body
@@ -198,10 +194,13 @@ Info (12021): Found 2 design units, including 1 entities, in source file procesa
 Info (12021): Found 2 design units, including 1 entities, in source file caracteres_especiales_revd.vhd
     Info (12022): Found design unit 1: CARACTERES_ESPECIALES_REVD-Behavioral
     Info (12023): Found entity 1: CARACTERES_ESPECIALES_REVD
-Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 11 errors, 0 warnings
-    Error: Peak virtual memory: 4625 megabytes
-    Error: Processing ended: Tue Oct 05 19:47:57 2021
-    Error: Elapsed time: 00:00:03
+Info (12127): Elaborating entity "UnidadControl" for the top level hierarchy
+Error (10495): VHDL Subprogram Declaration error at UnidadAritmeticaLogica.vhd(14): declaration of function or procedure "ALU_limpiarAcumulador" must have corresponding Subprogram Body File: C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/01/UnidadAritmeticaLogica.vhd Line: 14
+Error (12153): Can't elaborate top-level user hierarchy
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 2 errors, 0 warnings
+    Error: Peak virtual memory: 4623 megabytes
+    Error: Processing ended: Wed Oct 06 21:26:18 2021
+    Error: Elapsed time: 00:00:02
     Error: Total CPU time (on all processors): 00:00:01
 
 

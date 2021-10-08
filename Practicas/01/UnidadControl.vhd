@@ -11,8 +11,8 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use work.ALU_PACKAGE.all;
 USE WORK.COMANDOS_LCD_REVD.ALL;
+
 use work.bcd_7seg.all;
 use work.Util.all;
 
@@ -23,28 +23,35 @@ entity UnidadControl is
 	PORT(
 		-----------------------------------------------------------
 		------------------PUERTOS DEL LCD--------------------------
-			RS 		  		  : OUT STD_LOGIC;								   --  Bandera de comando y datos 
-			RW		  		     : OUT STD_LOGIC;								   --  Bandera de lectura y escritura
-			ENA 	  		     : OUT STD_LOGIC;								   --  Control de activado
-			DATA_LCD 		  : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);	  	   --  Bus de datos
-			LCD_ON		  	  : OUT std_LOGIC;								   --	 Encender
-		-----------------------------------------------------
-		-----------------------------------------------------
-			  
+		RS 		  		  : OUT STD_LOGIC;								   	--  Bandera de comando y datos 
+		RW		  		     : OUT STD_LOGIC;								   	--  Bandera de lectura y escritura
+		ENA 	  		     : OUT STD_LOGIC;								   	--  Control de activado
+		DATA_LCD 		  : OUT STD_LOGIC_VECTOR(7 DOWNTO 0);	  	   	--  Bus de datos
+		LCD_ON		  	  : OUT std_LOGIC;								   	--	 Encender
+		-----------------------------------------------------------
+		-----------------------------------------------------------			  
 			  
 		-----------------------------------------------------------
 		--------------PUERTOS DEL DISPLAY DE 7 SEGMENTOS-----------
-			Display_7s		  : OUT std_LOGIC_VECTOR(55 downto 0);			-- Todos los display de 7 segmentos			
+		Display_7s		  : OUT std_LOGIC_VECTOR(55 downto 0);				-- Todos los display de 7 segmentos			
 		-----------------------------------------------------------
 		-----------------------------------------------------------
 		
 		-----------------------------------------------------------
 		--------------PUERTOS DE LA UNIDAD DE  CONTROL-------------	
-			CLK      		     : IN std_logic;                            --  Reloj
-			clr				     : IN std_logic;										--  Limpiar todo			
-			exe         	  	  : IN std_logic;                            --  Boton de ejecucion
-			Entrada_Datos   	  : IN std_logic_vector(7 downto 0);         --  Switches de datos
-			Entrada_Instruccion : IN std_logic_vector(4 downto 0)          --  Switches de instrucciones       
+		CLK      		     : IN std_logic;                            --  Reloj
+		clr				     : IN std_logic;										--  Limpiar todo			
+		exe         	  	  : IN std_logic;                            --  Boton de ejecucion
+		Entrada_Datos   	  : IN std_logic_vector(7 downto 0);         --  Switches de datos
+		Entrada_Instruccion : IN std_logic_vector(4 downto 0);         --  Switches de instrucciones       
+		-----------------------------------------------------------
+		-----------------------------------------------------------
+		
+		-----------------------------------------------------------
+		--------------PUERTOS DE LA MEMORIA SDRAM------------------	
+		SDRAM_Direcciones   : 	OUT std_logic_vector(12 downto 00);    --  BUS de direcciones
+		SDRAM_Datos			  : INOUT std_logic_vector(31 downto 00);		--  BUS de datos			
+		SDRAM_Control       :   OUT std_logic_vector(11 downto 00)     --  BUS de control    
 		----------------------------------------------------------
 		-----------------------------------------------------------
 	);
@@ -53,15 +60,14 @@ architecture control of UnidadControl is
 	------------------------------------------------------------------------------
 	----------------------Señales para resultado----------------------------------
 	signal Acumulador 			: std_logic_vector(15 downto 0) := (others => '0'); -- Acumulador (Resultado)
-	signal Contador   			: unsigned(7 downto 0)         := (others => '0');  -- Contador de operaciones
-	signal Indice    				: std_logic_vector(12 downto 0) := (others => '0'); -- Indice en memoria
+	signal Contador   			: unsigned(7 downto 0)         := (others => '0');  -- Contador de operaciones	
 	------------------------------------------------------------------------------
 	------------------------------------------------------------------------------
 	
 	------------------------------------------------------------------------------
 	----------------------Señales para la impresion-------------------------------
 	signal Numero_Instruccion 	: INT_ARRAY(01 downto 0); 		 -- Id de la instruccion
-	signal Nombre_Instruccion  : INT_ARRAY(03 downto 0); 		 -- Iniciales de la instruccion
+	signal Nombre_Instruccion  : INT_ARRAY(04 downto 0); 		 -- Iniciales de la instruccion
 	signal Auxiliar  				: std_logic_vector(3 downto 0);-- Auxiliar para la conversion a BCD
 	------------------------------------------------------------------------------
 	------------------------------------------------------------------------------
@@ -177,8 +183,7 @@ PORT map( CLK,VECTOR_MEM,C1S,C2S,C3S,C4S,C5S,C6S,C7S,C8S,RS, --
 U2 : CARACTERES_ESPECIALES_REVD 										 --
 PORT MAP( C1S,C2S,C3S,C4S,C5S,C6S,C7S,C8S );				 		 --
 																				 --
-VECTOR_MEM <= INST(DIR_MEM);											 --
-																				 --
+VECTOR_MEM <= INST(DIR_MEM);											 --								
 ---------------------------------------------------------------
 ---------------------------------------------------------------
 
@@ -190,13 +195,12 @@ VECTOR_MEM <= INST(DIR_MEM);											 --
 UC : 	process (clk,clr,exe,Entrada_Datos,Entrada_Instruccion) begin			
 		LCD_ON<='1';
 		if (clr = '0') then        	 -- Se tiene que hacer limpieza de todo
-			Contador<=Contador+1;
-			regresarDefault(Acumulador, Contador, Indice);			
+			regresarDefault(Acumulador, Contador);			
 		elsif (clk'event and clk = '1') then 
 			if (exe = '0') then -- Fue presionado el boton de ejecucion			
 				obtenerInstruccion(Entrada_Instruccion, Numero_Instruccion, Nombre_Instruccion);
-				menuOperaciones(Entrada_Instruccion, Entrada_Datos, Acumulador, Indice);
-				mostrarResultado(Display_7s, Acumulador, Contador, Nombre_Instruccion, Numero_Instruccion, Indice, Auxiliar);				
+				menuOperaciones(Entrada_Instruccion, Entrada_Datos, Acumulador, SDRAM_Direcciones, SDRAM_Datos, CLK, SDRAM_Control);
+				mostrarResultado(Display_7s, Acumulador, Contador, Nombre_Instruccion, Numero_Instruccion, Auxiliar);				
 				aumentarContador(Contador);				
 			end if;
 		end if;					

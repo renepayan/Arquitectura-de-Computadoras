@@ -10,6 +10,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
+use work.MemoriaRAM.all;
+
 package UnidadAritmeticaLogica is
 	procedure ALU_limpiarAcumulador(
 		signal Salida				: out std_logic_vector(15 downto 0));
@@ -34,7 +36,7 @@ package UnidadAritmeticaLogica is
 		
 	procedure ALU_multiplicacion(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
-		signal EntradaB				:  in std_logic_vector(07 downto 0);
+		signal EntradaB			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0));
 		
 	procedure ALU_division(
@@ -58,18 +60,22 @@ package UnidadAritmeticaLogica is
 		
 	procedure ALU_NOR(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
+		signal EntradaB 			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0));
 		
 	procedure ALU_NAND(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
+		signal EntradaB 			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0));
 		
 	procedure ALU_XOR(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
+		signal EntradaB 			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0));
 		
 	procedure ALU_XNOR(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
+		signal EntradaB 			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0));
 		
 	procedure ALU_corrimientoDerecha(
@@ -87,18 +93,23 @@ package UnidadAritmeticaLogica is
 		
 	procedure ALU_cargaAltaAcumulador(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
-		signal EntradaB			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0));
+	
+	procedure ALU_cargarDesdeRAM(
+		signal EntradaA 			 :    IN std_logic_vector(07 downto 0);
+		signal BUS_Direcciones   :   OUT std_logic_vector(12 downto 00);
+		signal BUS_Datos			 :   OUT std_logic_vector(31 downto 00);
+		signal BUS_Control       :   OUT std_logic_vector(11 downto 00);
+		signal Reloj		       :    IN std_logic;
+		signal Salida			 	 :   OUT std_logic_vector(15 downto 0));
 		
-	procedure ALU_sumaYCorrimientoDerecha(
-		signal EntradaA 			:  in std_logic_vector(07 downto 0);		
-		signal EntradaB			:  in std_logic_vector(07 downto 0);
-		signal Salida				: out std_logic_vector(15 downto 0));
-		
-	procedure ALU_sumaYCorrimientoIzquierda(
-		signal EntradaA 			:  in std_logic_vector(07 downto 0);
-		signal EntradaB			:  in std_logic_vector(07 downto 0);
-		signal Salida				: out std_logic_vector(15 downto 0));
+	procedure ALU_cargarARAM(
+		signal EntradaA 			 :    IN std_logic_vector(07 downto 0);
+		signal EntradaB 			 :    IN std_logic_vector(15 downto 0);
+		signal BUS_Direcciones   :   OUT std_logic_vector(12 downto 00);
+		signal BUS_Datos			 :   OUT std_logic_vector(31 downto 00);
+		signal BUS_Control       :   OUT std_logic_vector(11 downto 00);
+		signal Reloj		       :    IN std_logic);
 end package;
 
 package body UnidadAritmeticaLogica is
@@ -121,7 +132,7 @@ package body UnidadAritmeticaLogica is
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);		
 		signal Salida				: out std_logic_vector(12 downto 0)) is begin
 		
-		Salida <= std_logic_vector( "0000" & signed(EntradaA));
+		Salida <= std_logic_vector( "00000" & signed(EntradaA));
 		
 	end procedure; 
 	procedure ALU_suma(
@@ -134,7 +145,7 @@ package body UnidadAritmeticaLogica is
 	end procedure; 
 	procedure ALU_resta(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
-		signal EntradaB				:  in std_logic_vector(07 downto 0);
+		signal EntradaB			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0)) is begin
 		
 		Salida <= std_logic_vector( "00000000" & signed(EntradaA) - signed(EntradaB));
@@ -142,10 +153,10 @@ package body UnidadAritmeticaLogica is
 	end procedure; 
 	procedure ALU_multiplicacion(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
-		signal EntradaB				:  in std_logic_vector(07 downto 0);
+		signal EntradaB			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0)) is begin
 		
-		Salida <= std_logic_vector( "00000000" & signed(EntradaA) * signed(EntradaB));
+		Salida <= std_logic_vector( "" & signed(EntradaA) * signed(EntradaB));
 		
 	end procedure; 
 	procedure ALU_division(
@@ -228,7 +239,7 @@ package body UnidadAritmeticaLogica is
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0)) is begin
 	
-		Salida <= to_stdlogicvector("00000000" & to_bitvector(entradaA) srll 1);
+		Salida <= to_stdlogicvector("00000000" & to_bitvector(entradaA) sll 1);
 		
 	end procedure; 
 		
@@ -246,23 +257,34 @@ package body UnidadAritmeticaLogica is
 	end procedure; 
 		
 	procedure ALU_cargaAltaAcumulador(
-		signal EntradaA 			:  in std_logic_vector(07 downto 0);
-		signal EntradaB				:  in std_logic_vector(07 downto 0);
+		signal EntradaA 			:  in std_logic_vector(07 downto 0);		
 		signal Salida				: out std_logic_vector(15 downto 0)) is begin
 		
-		
+		Salida <= std_logic_vector(EntradaA & "00000000");
 		
 	end procedure; 
+	
+	procedure ALU_cargarDesdeRAM(
+		signal EntradaA 			 :    IN std_logic_vector(07 downto 0);
+		signal BUS_Direcciones   :   OUT std_logic_vector(12 downto 00);
+		signal BUS_Datos			 :    IN std_logic_vector(31 downto 00);
+		signal BUS_Control       :   OUT std_logic_vector(11 downto 00);
+		signal Reloj		       :    IN std_logic;
+		signal Salida			 	 :   OUT std_logic_vector(15 downto 0)) is begin
 		
-	procedure ALU_sumaYCorrimientoDerecha(
-		signal EntradaA 			:  in std_logic_vector(07 downto 0);
-		signal EntradaB				:  in std_logic_vector(07 downto 0);
-		signal Salida				: out std_logic_vector(15 downto 0)) is begin
-	end procedure; 
-	procedure ALU_sumaYCorrimientoIzquierda(
-		signal EntradaA 			:  in std_logic_vector(07 downto 0);
-		signal EntradaB				:  in std_logic_vector(07 downto 0);
-		signal Salida				: out std_logic_vector(15 downto 0)) is begin
-	end procedure; 
+		RAM_obtenerRegistro(BUS_Direcciones, BUS_Datos, BUS_Control, EntradaA, Reloj, Salida);
 		
+	end procedure;
+	
+	procedure ALU_cargarARAM(
+		signal EntradaA 			 :    IN std_logic_vector(07 downto 0);
+		signal EntradaB 			 :    IN std_logic_vector(15 downto 0);
+		signal BUS_Direcciones   :   OUT std_logic_vector(12 downto 00);
+		signal BUS_Datos			 :   OUT std_logic_vector(31 downto 00);
+		signal BUS_Control       :   OUT std_logic_vector(11 downto 00);
+		signal Reloj		       :    IN std_logic) is begin
+		
+		RAM_cargarRegistro(BUS_Direcciones, BUS_Datos, BUS_Control, EntradaA, Reloj, EntradaB);
+		
+	end procedure;
 end UnidadAritmeticaLogica;

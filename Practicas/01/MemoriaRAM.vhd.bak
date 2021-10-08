@@ -1,0 +1,17 @@
+--          INSTITUTO POLITECNICO NACIONAL 
+--           Escuela Superior de Cómputo
+--           Arquitectura de Computadoras
+--
+--           Juarez Martinez Ares Ulises
+--           	  Payán Téllez René
+--
+--     Practica 1 Arquitectura Basica de 8 bits
+library ieee;
+use ieee.std_logic_1164.all;
+
+package MemoriaRAM is 
+
+end package;
+
+package body MemoriaRAM is
+end MemoriaRAM;

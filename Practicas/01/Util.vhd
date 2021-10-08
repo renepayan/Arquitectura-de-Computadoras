@@ -106,19 +106,19 @@ package body Util is
 			when "00110" =>																					-- Division
 				ALU_division(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
 			when "00111" =>																					-- OR
-				ALU_OR(Acumulador(7 downto 0), Acumulador);
+				ALU_OR(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
 			when "01000" =>																					-- AND
-				ALU_AND(Acumulador(7 downto 0), Acumulador);
+				ALU_AND(cumulador(7 downto 0), Entrada_Datos, Acumulador);
 			when "01001" =>																					-- NOT
 				ALU_NOT(Acumulador(7 downto 0), Acumulador);
 			when "01010" =>																					-- NOR
-				ALU_NOR(Acumulador(7 downto 0), Acumulador);
+				ALU_NOR(cumulador(7 downto 0), Entrada_Datos,  Acumulador);
 			when "01011" =>																					-- NAND
-				ALU_NAND(Acumulador(7 downto 0), Acumulador);
+				ALU_NAND(cumulador(7 downto 0), Entrada_Datos, Acumulador);
 			when "01100" =>																					-- XOR
-				ALU_XOR(Acumulador(7 downto 0), Acumulador);
+				ALU_XOR(cumulador(7 downto 0), Entrada_Datos,  Acumulador);
 			when "01101" =>																					-- XNOR
-				ALU_XNOR(Acumulador(7 downto 0), Acumulador);
+				ALU_XNOR(cumulador(7 downto 0), Entrada_Datos,  Acumulador);
 			when "01110" =>																					-- Corrimiento a la derecha
 				ALU_corrimientoDerecha(Acumulador(7 downto 0), Acumulador);
 			when "01111" =>																					-- Corrimiento a la izquierda

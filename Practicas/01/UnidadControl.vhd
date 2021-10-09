@@ -60,7 +60,7 @@ architecture control of UnidadControl is
 	------------------------------------------------------------------------------
 	----------------------Señales para resultado----------------------------------
 	signal Acumulador 			: std_logic_vector(15 downto 0) := (others => '0'); -- Acumulador (Resultado)
-	signal Contador   			: unsigned(7 downto 0)         := (others => '0');  -- Contador de operaciones	
+	signal Contador   			: unsigned(7 downto 0)          := (others => '0'); -- Contador de operaciones	
 	------------------------------------------------------------------------------
 	------------------------------------------------------------------------------
 	
@@ -195,16 +195,16 @@ VECTOR_MEM <= INST(DIR_MEM);											 --
 --------------------ESCRIBE TU CÓDIGO DE VHDL----------------------	
 UC : 	process (clk,clr,exe,Entrada_Datos,Entrada_Instruccion) begin			
 		LCD_ON<='1';
-		if(clr = '1') then        	 -- Se tiene que hacer limpieza de todo
+		if(clr = '0') then        	 -- Se tiene que hacer limpieza de todo
 			BanderaDefault <= '1';
 		elsif (clk'event and clk = '1') then 
-			if (exe = '0') then -- Fue presionado el boton de ejecucion			
+			if (exe = '0') then 		 -- Fue presionado el boton de ejecucion			
 				obtenerInstruccion(Entrada_Instruccion, Numero_Instruccion, Nombre_Instruccion);
-				menuOperaciones(Entrada_Instruccion, Entrada_Datos, Acumulador, SDRAM_Direcciones, SDRAM_Datos, CLK, SDRAM_Control);
-				mostrarResultado(Display_7s, Acumulador, Contador, Nombre_Instruccion, Numero_Instruccion, Auxiliar);				
-				aumentarContador(Contador);				
+				menuOperaciones(Entrada_Instruccion, Entrada_Datos, Acumulador, SDRAM_Direcciones, SDRAM_Datos, CLK, SDRAM_Control);				
+				Contador <= Contador+1;
 			end if;
 		end if;	
+		mostrarResultado(Display_7s, Acumulador, Contador, Nombre_Instruccion, Numero_Instruccion, Auxiliar);				
 		if (BanderaDefault = '1') then        	 -- Se ejecuta la limpieza		
 			regresarDefault(Acumulador, Contador, Display_7s);	
 			BanderaDefault <= '0';		

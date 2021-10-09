@@ -58,18 +58,18 @@ package body Util is
 		signal Numero_Instruccion	:    in INT_ARRAY(01 downto 0);
 		signal Auxiliar				: inout std_logic_vector(3 downto 0)) is begin
 		
-		bcd_conv(Acumulador(15 downto 12),Display_7s(06 downto 00));
-		bcd_conv(Acumulador(11 downto 08),Display_7s(13 downto 07));
-		bcd_conv(Acumulador(07 downto 04),Display_7s(20 downto 14));
-		bcd_conv(Acumulador(03 downto 00),Display_7s(27 downto 21));
+		bcd_conv(Acumulador(15 downto 12),Display_7s(34 downto 28));
+		bcd_conv(Acumulador(11 downto 08),Display_7s(41 downto 35));
+		bcd_conv(Acumulador(07 downto 04),Display_7s(48 downto 42));
+		bcd_conv(Acumulador(03 downto 00),Display_7s(55 downto 49));
 		
-		bcd_conv(STD_LOGIC_VECTOR(Contador)(7 downto 4),Display_7s(34 downto 28));
-		bcd_conv(STD_LOGIC_VECTOR(Contador)(3 downto 0),Display_7s(41 downto 35));
+		bcd_conv(STD_LOGIC_VECTOR(Contador)(7 downto 4),Display_7s(20 downto 14));
+		bcd_conv(STD_LOGIC_VECTOR(Contador)(3 downto 0),Display_7s(27 downto 21));
 		
 		Auxiliar <= std_logic_vector(to_unsigned(Numero_Instruccion(0), Auxiliar'length));
-		bcd_conv(Auxiliar,Display_7s(48 downto 42));
+		bcd_conv(Auxiliar,Display_7s(6 downto 0));
 		Auxiliar <= std_logic_vector(to_unsigned(Numero_Instruccion(1), Auxiliar'length));
-		bcd_conv(Auxiliar,Display_7s(55 downto 49));
+		bcd_conv(Auxiliar,Display_7s(13 downto 7));
 		
 		
 	end mostrarResultado;
@@ -81,7 +81,7 @@ package body Util is
 		
 		Acumulador <= "0000000000000000"; 
 		Contador   <= "00000000";
-		Display7_s <= "11111111111111111111111111111111111111111111111111111111";
+		Display7_s <= "00000010000001000000100000010000001000000100000010000001";
 	end regresarDefault;
 	
 	procedure menuOperaciones(

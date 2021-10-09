@@ -69,6 +69,7 @@ architecture control of UnidadControl is
 	signal Numero_Instruccion 	: INT_ARRAY(01 downto 0); 		 -- Id de la instruccion
 	signal Nombre_Instruccion  : INT_ARRAY(04 downto 0); 		 -- Iniciales de la instruccion
 	signal Auxiliar  				: std_logic_vector(3 downto 0);-- Auxiliar para la conversion a BCD
+	signal BanderaDefault    	: std_logic := '1';				 -- Bandera para el reinicio default
 	------------------------------------------------------------------------------
 	------------------------------------------------------------------------------
 	
@@ -194,8 +195,8 @@ VECTOR_MEM <= INST(DIR_MEM);											 --
 --------------------ESCRIBE TU CÓDIGO DE VHDL----------------------	
 UC : 	process (clk,clr,exe,Entrada_Datos,Entrada_Instruccion) begin			
 		LCD_ON<='1';
-		if (clr = '0') then        	 -- Se tiene que hacer limpieza de todo
-			regresarDefault(Acumulador, Contador);			
+		if(clr = '1') then        	 -- Se tiene que hacer limpieza de todo
+			BanderaDefault <= '1';
 		elsif (clk'event and clk = '1') then 
 			if (exe = '0') then -- Fue presionado el boton de ejecucion			
 				obtenerInstruccion(Entrada_Instruccion, Numero_Instruccion, Nombre_Instruccion);
@@ -203,7 +204,11 @@ UC : 	process (clk,clr,exe,Entrada_Datos,Entrada_Instruccion) begin
 				mostrarResultado(Display_7s, Acumulador, Contador, Nombre_Instruccion, Numero_Instruccion, Auxiliar);				
 				aumentarContador(Contador);				
 			end if;
-		end if;					
+		end if;	
+		if (BanderaDefault = '1') then        	 -- Se ejecuta la limpieza		
+			regresarDefault(Acumulador, Contador, Display_7s);	
+			BanderaDefault <= '0';		
+		end if;
 end process UC;
 
 -------------------------------------------------------------------

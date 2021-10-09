@@ -1,12 +1,12 @@
-Fitter Status : Successful - Fri Oct 08 05:12:19 2021
+Fitter Status : Successful - Fri Oct 08 18:59:35 2021
 Quartus II 64-Bit Version : 12.1 Build 177 11/07/2012 SJ Web Edition
 Revision Name : UnidadControl
 Top-level Entity Name : UnidadControl
 Family : Cyclone IV E
 Device : EP4CE115F29C7
 Timing Models : Final
-Total logic elements : 552 / 114,480 ( < 1 % )
-    Total combinational functions : 529 / 114,480 ( < 1 % )
+Total logic elements : 549 / 114,480 ( < 1 % )
+    Total combinational functions : 530 / 114,480 ( < 1 % )
     Dedicated logic registers : 173 / 114,480 ( < 1 % )
 Total registers : 173
 Total pins : 141 / 529 ( 27 % )

@@ -18,8 +18,9 @@ package Util is
 	type INT_ARRAY is array (integer range <>) of integer;		
 	procedure regresarDefault(															 				-- Esta funcion es el reset maestro, regresa el contador y el acumulador a 0
 		signal Acumulador : out std_logic_vector(15 downto 0);   					 		-- Es el acumulador de la unidad de control
-		signal Contador   : out unsigned(7 downto 0));  				 						-- Es el contador de instrucciones
-		
+		signal Contador   : out unsigned(7 downto 0);	  			 						   -- Es el contador de instrucciones
+		signal Display7_s : out std_logic_vector(55 downto 0));								-- Es el display de 7 segmentos
+				
 	procedure mostrarResultado(																		-- Esta funcion muestra el resultado en las pantallas
 		signal Display_7s  			:   out std_logic_vector(55 downto 0);					-- Son los display de 7 segmentos
 		signal Acumulador	 			:    in std_logic_vector(15 downto 0);					-- Es el acumulador de la unidad de control
@@ -75,11 +76,12 @@ package body Util is
 	
 	procedure regresarDefault(
 		signal Acumulador : out std_logic_vector(15 downto 0);
-		signal Contador   : out unsigned(07 downto 0)) is begin
+		signal Contador   : out unsigned(07 downto 0);
+		signal Display7_s : out std_logic_vector(55 downto 0)) is begin
 		
 		Acumulador <= "0000000000000000"; 
 		Contador   <= "00000000";
-				
+		Display7_s <= "11111111111111111111111111111111111111111111111111111111";
 	end regresarDefault;
 	
 	procedure menuOperaciones(

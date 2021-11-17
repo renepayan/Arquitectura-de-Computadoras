@@ -113,7 +113,7 @@ package UnidadAritmeticaLogica is
 end package;
 
 package body UnidadAritmeticaLogica is
-	signal Carry: std_logic;
+
 	procedure ALU_limpiarAcumulador(
 		signal Salida				: out std_logic_vector(15 downto 0)) is begin
 		
@@ -139,29 +139,16 @@ package body UnidadAritmeticaLogica is
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
 		signal EntradaB				:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0)) is begin
-		Carry<='0';
-		for i in 0 to 7 loop
-			Salida(i)<=(EntradaA(i) xor EntradaB(i)) xor Carry;
-			Carry<=(EntradaA(i) and EntradaB(i)) or ((EntradaA(i) xor EntradaB(i)) and Carry);
-		end loop;
-		for i in 8 to 15 loop
-			Salida(i)<='0';
-		end loop;
+		
+		Salida <= std_logic_vector( "00000000" & signed(EntradaA) + signed(EntradaB));
 		
 	end procedure; 
 	procedure ALU_resta(
 		signal EntradaA 			:  in std_logic_vector(07 downto 0);
 		signal EntradaB			:  in std_logic_vector(07 downto 0);
 		signal Salida				: out std_logic_vector(15 downto 0)) is begin
-		Carry<='0';
-		for i in 0 to 7 loop
-			Salida(i)<=(EntradaA(i) xor EntradaB(i)) xor Carry;
-			Carry<=(not EntradaA(i) and EntradaB(i)) or ((not (EntradaA(i) xor EntradaB(i))) and Carry);
-		end loop;
-		for i in 8 to 15 loop
-			Salida(i)<='0';
-		end loop;
 		
+		Salida <= std_logic_vector( "00000000" & signed(EntradaA) - signed(EntradaB));
 		
 	end procedure; 
 	procedure ALU_multiplicacion(

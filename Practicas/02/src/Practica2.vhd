@@ -29,14 +29,6 @@ entity Practica2 is
 		-----------------------------------------------------------
 		
 		-----------------------------------------------------------
-		--------------PUERTOS DE LA MEMORIA SDRAM------------------	
-		SDRAM_Direcciones   : 	OUT std_logic_vector(12 downto 00);    --  BUS de direcciones
-		SDRAM_Datos			  : INOUT std_logic_vector(31 downto 00);	   --  BUS de datos			
-		SDRAM_Control       :   OUT std_logic_vector(11 downto 00);     --  BUS de control    
-		-----------------------------------------------------------
-		-----------------------------------------------------------
-		
-		-----------------------------------------------------------
 		--------------PUERTOS DEL DISPLAY DE 7 SEGMENTOS-----------
 		Display_7s		  : OUT std_LOGIC_VECTOR(55 downto 0)				-- Todos los display de 7 segmentos			
 		-----------------------------------------------------------

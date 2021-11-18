@@ -86,46 +86,30 @@ package body Util is
 				ALU_limpiarAcumulador(Acumulador);
 			when "00001" =>																					-- Carga en la parte baja del acumulador
 				ALU_cargaAcumulador(Entrada_Datos, Acumulador);													
-			when "00010" =>																					-- Carga de la RAM al acumulador
-				--ALU_cargarDesdeRAM(Entrada_Datos, SDRAM_Direcciones, SDRAM_Datos, SDRAM_Control, Reloj, Acumulador);
-			when "00011" =>																					-- Carga del acumulador a la RAM
-				--ALU_cargarARAM(Entrada_Datos, Acumulador, SDRAM_Direcciones, SDRAM_Datos, SDRAM_Control, Reloj);				
-			when "00100" =>																					-- Suma
-				ALU_suma(Acumulador(7 downto 0), Entrada_Datos, Acumulador);				
-			when "00101" =>																					-- Resta
+			when "00010" =>																					-- Suma
+				ALU_suma(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
+			when "00011" =>																					-- Resta	
 				ALU_resta(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
-			when "00110" =>																					-- Multiplicacion
-				ALU_multiplicacion(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
-			when "00111" =>																					-- Division
-				ALU_division(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
-			when "01000" =>																					-- OR
+			when "00100" =>																					-- And
+				ALU_AND(Acumulador(7 downto 0), Entrada_Datos, Acumulador);				
+			when "00101" =>																					-- Or
 				ALU_OR(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
-			when "01001" =>																					-- AND
-				ALU_AND(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
-			when "01010" =>																					-- NOT
-				ALU_NOT(Acumulador(7 downto 0), Acumulador);
-			when "01011" =>																					-- NOR
-				ALU_NOR(Acumulador(7 downto 0), Entrada_Datos,  Acumulador);
-			when "01100" =>																					-- NAND
-				ALU_NAND(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
-			when "01101" =>																					-- XOR
+			when "00110" =>																					-- Xor
 				ALU_XOR(Acumulador(7 downto 0), Entrada_Datos,  Acumulador);
-			when "01110" =>																					-- XNOR
-				ALU_XNOR(Acumulador(7 downto 0), Entrada_Datos,  Acumulador);
-			when "01111" =>																					-- Corrimiento a la derecha
-				ALU_corrimientoDerecha(Acumulador(7 downto 0), Acumulador);
-			when "10000" =>																					-- Corrimiento a la izquierda												
-				ALU_corrimientoIzquierda(Acumulador(7 downto 0), Acumulador);
-			when "10001" =>																					-- If buffer
-				ALU_if(Acumulador(7 downto 0), Entrada_Datos, Acumulador);											
-			when "10010" =>																					-- Carga en la parte alta del acumulador
-				ALU_cargaAltaAcumulador(Entrada_Datos, Acumulador);
-			when "10011" =>																					-- Suma y corrimiento a la derecha
-				ALU_suma(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
-				ALU_CorrimientoIzquierda(Acumulador(7 downto 0), Acumulador);
-			when "10100" =>																					-- Suma y corrimiento a la izquierda
-				ALU_suma(Acumulador(7 downto 0), Entrada_Datos, Acumulador);
-				ALU_corrimientoIzquierda(Acumulador(7 downto 0), Acumulador);
+			when "00111" =>																					-- Reservado
+			when "01000" =>																					-- Reservado
+			when "01001" =>																					-- Reservado
+			when "01010" =>																					-- Reservado
+			when "01011" =>																					-- Reservado
+			when "01100" =>																					-- Reservado
+			when "01101" =>																					-- Reservado
+			when "01110" =>																					-- Reservado
+			when "01111" =>																					-- Reservado
+			when "10000" =>																					-- Reservado									
+			when "10001" =>																					-- Reservado
+			when "10010" =>																					-- Reservado
+			when "10011" =>																					-- Reservado
+			when "10100" =>																					-- Reservado
 			when "10101" =>																					-- Reservado
 			when "10110" =>																					-- Reservado
 			when "10111" =>																					-- Reservado
@@ -157,61 +141,61 @@ package body Util is
 			when "00001" =>																					-- Carga en la parte baja del acumulador
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 1;	
-			when "00010" =>																					-- Carga al acumulador desde la RAM
+			when "00010" =>																					-- Suma
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 2;
-			when "00011" =>																					-- Carga a la RAM desde el Acumulador
+			when "00011" =>																					-- Resta
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 2;
-			when "00100" =>																					-- Suma
+			when "00100" =>																					-- And
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 4;
-			when "00101" =>																					-- Resta
+			when "00101" =>																					-- OR
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 5;
-			when "00110" =>																					-- Multiplicacion
+			when "00110" =>																					-- XOR
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 6;
-			when "00111" =>																					-- Division
+			when "00111" =>																					-- Reservado
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 7;
-			when "01000" =>																					-- OR
+			when "01000" =>																					-- Reservado
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 8; 		
-			when "01001" =>																					-- AND
+			when "01001" =>																					-- Reservado
 				Numero_Instruccion(0) <= 0;
 				Numero_Instruccion(1) <= 9;
-			when "01010" =>																					-- NOT
+			when "01010" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 0;
-			when "01011" =>																					-- NOR
+			when "01011" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 1;
-			when "01100" =>																					-- NAND
+			when "01100" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 2;
-			when "01101" =>																					-- XOR
+			when "01101" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 3;
-			when "01110" =>																					-- XNOR
+			when "01110" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 4;
-			when "01111" =>																					-- Corrimiento a la derecha
+			when "01111" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 5;
-			when "10000" =>																					-- Corrimiento a la izquierda									
+			when "10000" =>																					-- Reservado					
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 6;
-			when "10001" =>																					-- If buffer
+			when "10001" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 7;			
-			when "10010" =>																					-- Carga en la parte alta del acumulador
+			when "10010" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 8;
-			when "10011" =>																					-- Suma y corrimiento a la derecha
+			when "10011" =>																					-- Reservado
 				Numero_Instruccion(0) <= 1;
 				Numero_Instruccion(1) <= 9;
-			when "10100" =>																					-- Suma y corrimiento a la izquierda
+			when "10100" =>																					-- Reservado
 				Numero_Instruccion(0) <= 2;
 				Numero_Instruccion(1) <= 0;
 			when "10101" =>																					-- Reservado

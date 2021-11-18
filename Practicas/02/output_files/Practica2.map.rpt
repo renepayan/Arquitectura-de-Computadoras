@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Practica2
-Tue Nov 16 19:34:22 2021
+Wed Nov 17 20:11:43 2021
 Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -13,16 +13,13 @@ Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
   5. Analysis & Synthesis Source Files Read
   6. Analysis & Synthesis Resource Usage Summary
   7. Analysis & Synthesis Resource Utilization by Entity
-  8. Analysis & Synthesis DSP Block Usage Summary
-  9. User-Specified and Inferred Latches
- 10. General Register Statistics
+  8. Registers Removed During Synthesis
+  9. General Register Statistics
+ 10. Inverted Register Statistics
  11. Multiplexer Restructuring Statistics (Restructuring Performed)
  12. Parameter Settings for User Entity Instance: Top-level Entity: |Practica2
- 13. Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0
- 14. Parameter Settings for Inferred Entity Instance: lpm_divide:Div0
- 15. lpm_mult Parameter Settings by Entity Instance
- 16. Elapsed Time Per Partition
- 17. Analysis & Synthesis Messages
+ 13. Elapsed Time Per Partition
+ 14. Analysis & Synthesis Messages
 
 
 
@@ -48,19 +45,19 @@ applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +------------------------------------+------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Nov 16 19:34:22 2021    ;
+; Analysis & Synthesis Status        ; Successful - Wed Nov 17 20:11:43 2021    ;
 ; Quartus II 64-Bit Version          ; 12.1 Build 177 11/07/2012 SJ Web Edition ;
 ; Revision Name                      ; Practica2                                ;
 ; Top-level Entity Name              ; Practica2                                ;
 ; Family                             ; Cyclone IV E                             ;
-; Total logic elements               ; 313                                      ;
-;     Total combinational functions  ; 313                                      ;
-;     Dedicated logic registers      ; 0                                        ;
-; Total registers                    ; 0                                        ;
-; Total pins                         ; 71                                       ;
+; Total logic elements               ; 137                                      ;
+;     Total combinational functions  ; 123                                      ;
+;     Dedicated logic registers      ; 82                                       ;
+; Total registers                    ; 82                                       ;
+; Total pins                         ; 72                                       ;
 ; Total virtual pins                 ; 0                                        ;
 ; Total memory bits                  ; 0                                        ;
-; Embedded Multiplier 9-bit elements ; 1                                        ;
+; Embedded Multiplier 9-bit elements ; 0                                        ;
 ; Total PLLs                         ; 0                                        ;
 +------------------------------------+------------------------------------------+
 
@@ -152,50 +149,28 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------+--------------------+--------------------+
 
 
-+------------------------------------------+
-; Parallel Compilation                     ;
-+----------------------------+-------------+
-; Processors                 ; Number      ;
-+----------------------------+-------------+
-; Number detected on machine ; 4           ;
-; Maximum allowed            ; 4           ;
-;                            ;             ;
-; Average used               ; 1.00        ;
-; Maximum used               ; 1           ;
-;                            ;             ;
-; Usage by Processor         ; % Time Used ;
-;     1 processor            ; 100.0%      ;
-;     2-4 processors         ;   0.0%      ;
-+----------------------------+-------------+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 16     ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                                                               ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type                    ; File Name with Absolute Path                                                                                                           ; Library ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+---------+
-; src/bcd_7seg.VHD                 ; yes             ; User VHDL File               ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/src/bcd_7seg.VHD               ;         ;
-; src/Util.vhd                     ; yes             ; User VHDL File               ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/src/Util.vhd                   ;         ;
-; src/UnidadAritmeticaLogica.vhd   ; yes             ; User VHDL File               ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/src/UnidadAritmeticaLogica.vhd ;         ;
-; src/Practica2.vhd                ; yes             ; User VHDL File               ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/src/Practica2.vhd              ;         ;
-; src/MemoriaRAM.vhd               ; yes             ; User VHDL File               ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/src/MemoriaRAM.vhd             ;         ;
-; lpm_mult.tdf                     ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/lpm_mult.tdf                                                                            ;         ;
-; aglobal121.inc                   ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/aglobal121.inc                                                                          ;         ;
-; lpm_add_sub.inc                  ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/lpm_add_sub.inc                                                                         ;         ;
-; multcore.inc                     ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/multcore.inc                                                                            ;         ;
-; bypassff.inc                     ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/bypassff.inc                                                                            ;         ;
-; altshift.inc                     ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/altshift.inc                                                                            ;         ;
-; db/mult_73t.tdf                  ; yes             ; Auto-Generated Megafunction  ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/db/mult_73t.tdf                ;         ;
-; lpm_divide.tdf                   ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/lpm_divide.tdf                                                                          ;         ;
-; abs_divider.inc                  ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/abs_divider.inc                                                                         ;         ;
-; sign_div_unsign.inc              ; yes             ; Megafunction                 ; c:/altera/12.1/quartus/libraries/megafunctions/sign_div_unsign.inc                                                                     ;         ;
-; db/lpm_divide_fvo.tdf            ; yes             ; Auto-Generated Megafunction  ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/db/lpm_divide_fvo.tdf          ;         ;
-; db/abs_divider_aag.tdf           ; yes             ; Auto-Generated Megafunction  ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/db/abs_divider_aag.tdf         ;         ;
-; db/alt_u_div_i4f.tdf             ; yes             ; Auto-Generated Megafunction  ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/db/alt_u_div_i4f.tdf           ;         ;
-; db/add_sub_7pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/db/add_sub_7pc.tdf             ;         ;
-; db/add_sub_8pc.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/db/add_sub_8pc.tdf             ;         ;
-; db/lpm_abs_5v9.tdf               ; yes             ; Auto-Generated Megafunction  ; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/db/lpm_abs_5v9.tdf             ;         ;
-+----------------------------------+-----------------+------------------------------+----------------------------------------------------------------------------------------------------------------------------------------+---------+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                           ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type       ; File Name with Absolute Path                                                                    ; Library ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
+; src/bcd_7seg.VHD                 ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/src/bcd_7seg.VHD               ;         ;
+; src/Util.vhd                     ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/src/Util.vhd                   ;         ;
+; src/UnidadAritmeticaLogica.vhd   ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/src/UnidadAritmeticaLogica.vhd ;         ;
+; src/Practica2.vhd                ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/src/Practica2.vhd              ;         ;
+; src/MemoriaRAM.vhd               ; yes             ; User VHDL File  ; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/src/MemoriaRAM.vhd             ;         ;
++----------------------------------+-----------------+-----------------+-------------------------------------------------------------------------------------------------+---------+
 
 
 +-----------------------------------------------------+
@@ -203,106 +178,49 @@ applicable agreement for further details.
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 313   ;
+; Estimated Total logic elements              ; 137   ;
 ;                                             ;       ;
-; Total combinational functions               ; 313   ;
+; Total combinational functions               ; 123   ;
 ; Logic element usage by number of LUT inputs ;       ;
-;     -- 4 input functions                    ; 210   ;
-;     -- 3 input functions                    ; 73    ;
-;     -- <=2 input functions                  ; 30    ;
+;     -- 4 input functions                    ; 59    ;
+;     -- 3 input functions                    ; 40    ;
+;     -- <=2 input functions                  ; 24    ;
 ;                                             ;       ;
 ; Logic elements by mode                      ;       ;
-;     -- normal mode                          ; 253   ;
-;     -- arithmetic mode                      ; 60    ;
+;     -- normal mode                          ; 116   ;
+;     -- arithmetic mode                      ; 7     ;
 ;                                             ;       ;
-; Total registers                             ; 0     ;
-;     -- Dedicated logic registers            ; 0     ;
+; Total registers                             ; 82    ;
+;     -- Dedicated logic registers            ; 82    ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
-; I/O pins                                    ; 71    ;
-; Embedded Multiplier 9-bit elements          ; 1     ;
-; Maximum fan-out                             ; 48    ;
-; Total fan-out                               ; 1246  ;
-; Average fan-out                             ; 2.73  ;
+; I/O pins                                    ; 72    ;
+; Embedded Multiplier 9-bit elements          ; 0     ;
+; Maximum fan-out                             ; 82    ;
+; Total fan-out                               ; 723   ;
+; Average fan-out                             ; 2.07  ;
 +---------------------------------------------+-------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                              ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------+--------------+
-; Compilation Hierarchy Node             ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                          ; Library Name ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------+--------------+
-; |Practica2                             ; 313 (206)         ; 0 (0)        ; 0           ; 1            ; 1       ; 0         ; 71   ; 0            ; |Practica2                                                                                                                   ;              ;
-;    |lpm_divide:Div0|                   ; 107 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Practica2|lpm_divide:Div0                                                                                                   ;              ;
-;       |lpm_divide_fvo:auto_generated|  ; 107 (0)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Practica2|lpm_divide:Div0|lpm_divide_fvo:auto_generated                                                                     ;              ;
-;          |abs_divider_aag:divider|     ; 107 (14)          ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Practica2|lpm_divide:Div0|lpm_divide_fvo:auto_generated|abs_divider_aag:divider                                             ;              ;
-;             |alt_u_div_i4f:divider|    ; 77 (74)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Practica2|lpm_divide:Div0|lpm_divide_fvo:auto_generated|abs_divider_aag:divider|alt_u_div_i4f:divider                       ;              ;
-;                |add_sub_7pc:add_sub_0| ; 1 (1)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Practica2|lpm_divide:Div0|lpm_divide_fvo:auto_generated|abs_divider_aag:divider|alt_u_div_i4f:divider|add_sub_7pc:add_sub_0 ;              ;
-;                |add_sub_8pc:add_sub_1| ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Practica2|lpm_divide:Div0|lpm_divide_fvo:auto_generated|abs_divider_aag:divider|alt_u_div_i4f:divider|add_sub_8pc:add_sub_1 ;              ;
-;             |lpm_abs_5v9:my_abs_den|   ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Practica2|lpm_divide:Div0|lpm_divide_fvo:auto_generated|abs_divider_aag:divider|lpm_abs_5v9:my_abs_den                      ;              ;
-;             |lpm_abs_5v9:my_abs_num|   ; 8 (8)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |Practica2|lpm_divide:Div0|lpm_divide_fvo:auto_generated|abs_divider_aag:divider|lpm_abs_5v9:my_abs_num                      ;              ;
-;    |lpm_mult:Mult0|                    ; 0 (0)             ; 0 (0)        ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |Practica2|lpm_mult:Mult0                                                                                                    ;              ;
-;       |mult_73t:auto_generated|        ; 0 (0)             ; 0 (0)        ; 0           ; 1            ; 1       ; 0         ; 0    ; 0            ; |Practica2|lpm_mult:Mult0|mult_73t:auto_generated                                                                            ;              ;
-+----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+------------------------------------------------------------------------------------------------------------------------------+--------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                         ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; Compilation Hierarchy Node ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name ; Library Name ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
+; |Practica2                 ; 123 (123)         ; 82 (82)      ; 0           ; 0            ; 0       ; 0         ; 72   ; 0            ; |Practica2          ;              ;
++----------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+---------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
 
-+-----------------------------------------------------+
-; Analysis & Synthesis DSP Block Usage Summary        ;
-+---------------------------------------+-------------+
-; Statistic                             ; Number Used ;
-+---------------------------------------+-------------+
-; Simple Multipliers (9-bit)            ; 1           ;
-; Simple Multipliers (18-bit)           ; 0           ;
-; Embedded Multiplier Blocks            ; --          ;
-; Embedded Multiplier 9-bit elements    ; 1           ;
-; Signed Embedded Multipliers           ; 1           ;
-; Unsigned Embedded Multipliers         ; 0           ;
-; Mixed Sign Embedded Multipliers       ; 0           ;
-; Variable Sign Embedded Multipliers    ; 0           ;
-; Dedicated Input Shift Register Chains ; 0           ;
-+---------------------------------------+-------------+
-Note: number of Embedded Multiplier Blocks used is only available after a successful fit.
-
-
-+---------------------------------------------------------------------------------------------------------+
-; User-Specified and Inferred Latches                                                                     ;
-+-----------------------------------------------------+--------------------------+------------------------+
-; Latch Name                                          ; Latch Enable Signal      ; Free of Timing Hazards ;
-+-----------------------------------------------------+--------------------------+------------------------+
-; Numero_Instruccion[1][0]                            ; Numero_Instruccion[1][3] ; yes                    ;
-; Numero_Instruccion[1][1]                            ; Numero_Instruccion[1][3] ; yes                    ;
-; Numero_Instruccion[1][2]                            ; Numero_Instruccion[1][3] ; yes                    ;
-; Numero_Instruccion[1][3]                            ; Numero_Instruccion[1][3] ; yes                    ;
-; Contador[4]                                         ; Numero_Instruccion[1][3] ; yes                    ;
-; Contador[5]                                         ; Numero_Instruccion[1][3] ; yes                    ;
-; Contador[6]                                         ; Numero_Instruccion[1][3] ; yes                    ;
-; Contador[7]                                         ; Numero_Instruccion[1][3] ; yes                    ;
-; Contador[0]                                         ; Numero_Instruccion[1][3] ; yes                    ;
-; Contador[1]                                         ; Numero_Instruccion[1][3] ; yes                    ;
-; Contador[2]                                         ; Numero_Instruccion[1][3] ; yes                    ;
-; Contador[3]                                         ; Numero_Instruccion[1][3] ; yes                    ;
-; Acumulador[12]                                      ; Acumulador[15]           ; yes                    ;
-; Acumulador[13]                                      ; Acumulador[15]           ; yes                    ;
-; Acumulador[14]                                      ; Acumulador[15]           ; yes                    ;
-; Acumulador[15]                                      ; Acumulador[15]           ; yes                    ;
-; Acumulador[8]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[9]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[10]                                      ; Acumulador[15]           ; yes                    ;
-; Acumulador[11]                                      ; Acumulador[15]           ; yes                    ;
-; Acumulador[4]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[5]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[6]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[7]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[0]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[1]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[2]                                       ; Acumulador[15]           ; yes                    ;
-; Acumulador[3]                                       ; Acumulador[15]           ; yes                    ;
-; BanderaDefault                                      ; GND                      ; yes                    ;
-; Carry                                               ; Carry                    ; yes                    ;
-; Number of user-specified and inferred latches = 30  ;                          ;                        ;
-+-----------------------------------------------------+--------------------------+------------------------+
-Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
++--------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                             ;
++---------------------------------------+----------------------------------------+
+; Register name                         ; Reason for Removal                     ;
++---------------------------------------+----------------------------------------+
+; Acumulador[8,9,11..15]                ; Merged with Acumulador[10]             ;
+; Acumulador[10]                        ; Stuck at GND due to stuck port data_in ;
+; Total Number of Removed Registers = 8 ;                                        ;
++---------------------------------------+----------------------------------------+
 
 
 +------------------------------------------------------+
@@ -310,14 +228,25 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 0     ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 82    ;
+; Number of registers using Synchronous Clear  ; 8     ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Clock Enable       ; 20    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; BanderaDefault                         ; 52      ;
+; Numero_Instruccion[1][0]               ; 1       ;
+; Total number of inverted registers = 2 ;         ;
++----------------------------------------+---------+
 
 
 +------------------------------------------------------------------------------------------------------------------------------------------+
@@ -325,8 +254,8 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
-; 8:1                ; 7 bits    ; 35 LEs        ; 21 LEs               ; 14 LEs                 ; No         ; |Practica2|Mux63           ;
-; 18:1               ; 6 bits    ; 72 LEs        ; 48 LEs               ; 24 LEs                 ; No         ; |Practica2|Mux73           ;
+; 4:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |Practica2|Contador[7]     ;
+; 35:1               ; 8 bits    ; 184 LEs       ; 32 LEs               ; 152 LEs                ; Yes        ; |Practica2|Acumulador[7]   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+----------------------------+
 
 
@@ -340,90 +269,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
-+-------------------------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_mult:Mult0                     ;
-+------------------------------------------------+--------------+---------------------+
-; Parameter Name                                 ; Value        ; Type                ;
-+------------------------------------------------+--------------+---------------------+
-; AUTO_CARRY_CHAINS                              ; ON           ; AUTO_CARRY          ;
-; IGNORE_CARRY_BUFFERS                           ; OFF          ; IGNORE_CARRY        ;
-; AUTO_CASCADE_CHAINS                            ; ON           ; AUTO_CASCADE        ;
-; IGNORE_CASCADE_BUFFERS                         ; OFF          ; IGNORE_CASCADE      ;
-; LPM_WIDTHA                                     ; 8            ; Untyped             ;
-; LPM_WIDTHB                                     ; 8            ; Untyped             ;
-; LPM_WIDTHP                                     ; 16           ; Untyped             ;
-; LPM_WIDTHR                                     ; 16           ; Untyped             ;
-; LPM_WIDTHS                                     ; 1            ; Untyped             ;
-; LPM_REPRESENTATION                             ; SIGNED       ; Untyped             ;
-; LPM_PIPELINE                                   ; 0            ; Untyped             ;
-; LATENCY                                        ; 0            ; Untyped             ;
-; INPUT_A_IS_CONSTANT                            ; NO           ; Untyped             ;
-; INPUT_B_IS_CONSTANT                            ; NO           ; Untyped             ;
-; USE_EAB                                        ; OFF          ; Untyped             ;
-; MAXIMIZE_SPEED                                 ; 5            ; Untyped             ;
-; DEVICE_FAMILY                                  ; Cyclone IV E ; Untyped             ;
-; CARRY_CHAIN                                    ; MANUAL       ; Untyped             ;
-; APEX20K_TECHNOLOGY_MAPPER                      ; LUT          ; TECH_MAPPER_APEX20K ;
-; DEDICATED_MULTIPLIER_CIRCUITRY                 ; AUTO         ; Untyped             ;
-; DEDICATED_MULTIPLIER_MIN_INPUT_WIDTH_FOR_AUTO  ; 0            ; Untyped             ;
-; DEDICATED_MULTIPLIER_MIN_OUTPUT_WIDTH_FOR_AUTO ; 0            ; Untyped             ;
-; CBXI_PARAMETER                                 ; mult_73t     ; Untyped             ;
-; INPUT_A_FIXED_VALUE                            ; Bx           ; Untyped             ;
-; INPUT_B_FIXED_VALUE                            ; Bx           ; Untyped             ;
-; USE_AHDL_IMPLEMENTATION                        ; OFF          ; Untyped             ;
-+------------------------------------------------+--------------+---------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+------------------------------------------------------------------+
-; Parameter Settings for Inferred Entity Instance: lpm_divide:Div0 ;
-+------------------------+----------------+------------------------+
-; Parameter Name         ; Value          ; Type                   ;
-+------------------------+----------------+------------------------+
-; LPM_WIDTHN             ; 8              ; Untyped                ;
-; LPM_WIDTHD             ; 8              ; Untyped                ;
-; LPM_NREPRESENTATION    ; SIGNED         ; Untyped                ;
-; LPM_DREPRESENTATION    ; SIGNED         ; Untyped                ;
-; LPM_PIPELINE           ; 0              ; Untyped                ;
-; LPM_REMAINDERPOSITIVE  ; FALSE          ; Untyped                ;
-; MAXIMIZE_SPEED         ; 5              ; Untyped                ;
-; CBXI_PARAMETER         ; lpm_divide_fvo ; Untyped                ;
-; CARRY_CHAIN            ; MANUAL         ; Untyped                ;
-; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                ;
-; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY             ;
-; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY           ;
-; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE           ;
-; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE         ;
-+------------------------+----------------+------------------------+
-Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
-
-
-+--------------------------------------------------------+
-; lpm_mult Parameter Settings by Entity Instance         ;
-+---------------------------------------+----------------+
-; Name                                  ; Value          ;
-+---------------------------------------+----------------+
-; Number of entity instances            ; 1              ;
-; Entity Instance                       ; lpm_mult:Mult0 ;
-;     -- LPM_WIDTHA                     ; 8              ;
-;     -- LPM_WIDTHB                     ; 8              ;
-;     -- LPM_WIDTHP                     ; 16             ;
-;     -- LPM_REPRESENTATION             ; SIGNED         ;
-;     -- INPUT_A_IS_CONSTANT            ; NO             ;
-;     -- INPUT_B_IS_CONSTANT            ; NO             ;
-;     -- USE_EAB                        ; OFF            ;
-;     -- DEDICATED_MULTIPLIER_CIRCUITRY ; AUTO           ;
-;     -- INPUT_A_FIXED_VALUE            ; Bx             ;
-;     -- INPUT_B_FIXED_VALUE            ; Bx             ;
-+---------------------------------------+----------------+
-
-
 +-------------------------------+
 ; Elapsed Time Per Partition    ;
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:03     ;
+; Top            ; 00:00:00     ;
 +----------------+--------------+
 
 
@@ -433,9 +284,9 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Tue Nov 16 19:34:16 2021
+    Info: Processing started: Wed Nov 17 20:11:41 2021
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Practica2 -c Practica2
-Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 0 entities, in source file src/bcd_7seg.vhd
     Info (12022): Found design unit 1: bcd_7seg
     Info (12022): Found design unit 2: bcd_7seg-body
@@ -452,131 +303,17 @@ Info (12021): Found 2 design units, including 0 entities, in source file src/mem
     Info (12022): Found design unit 1: MemoriaRAM
     Info (12022): Found design unit 2: MemoriaRAM-body
 Info (12127): Elaborating entity "Practica2" for the top level hierarchy
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(60): signal "Entrada_Instruccion" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(61): signal "Entrada_Instruccion" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(61): signal "Entrada_Datos" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(61): signal "Acumulador" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(62): signal "Contador" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(64): signal "Acumulador" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(64): signal "Contador" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(64): signal "Auxiliar" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at Practica2.vhd(65): signal "BanderaDefault" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10631): VHDL Process Statement warning at Practica2.vhd(56): inferring latch(es) for signal or variable "BanderaDefault", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at Practica2.vhd(56): inferring latch(es) for signal or variable "Numero_Instruccion", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at Practica2.vhd(56): inferring latch(es) for signal or variable "Carry", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at Practica2.vhd(56): inferring latch(es) for signal or variable "Acumulador", which holds its previous value in one or more paths through the process
-Warning (10631): VHDL Process Statement warning at Practica2.vhd(56): inferring latch(es) for signal or variable "Contador", which holds its previous value in one or more paths through the process
-Info (10041): Inferred latch for "Contador[0]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Contador[1]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Contador[2]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Contador[3]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Contador[4]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Contador[5]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Contador[6]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Contador[7]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[0]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[1]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[2]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[3]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[4]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[5]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[6]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[7]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[8]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[9]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[10]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[11]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[12]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[13]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[14]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Acumulador[15]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Carry" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Numero_Instruccion[1][0]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Numero_Instruccion[1][1]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Numero_Instruccion[1][2]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "Numero_Instruccion[1][3]" at Practica2.vhd(56)
-Info (10041): Inferred latch for "BanderaDefault" at Practica2.vhd(56)
-Info (278001): Inferred 2 megafunctions from design logic
-    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "Mult0"
-    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "Div0"
-Info (12130): Elaborated megafunction instantiation "lpm_mult:Mult0"
-Info (12133): Instantiated megafunction "lpm_mult:Mult0" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTHA" = "8"
-    Info (12134): Parameter "LPM_WIDTHB" = "8"
-    Info (12134): Parameter "LPM_WIDTHP" = "16"
-    Info (12134): Parameter "LPM_WIDTHR" = "16"
-    Info (12134): Parameter "LPM_WIDTHS" = "1"
-    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
-    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
-    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
-Info (12021): Found 1 design units, including 1 entities, in source file db/mult_73t.tdf
-    Info (12023): Found entity 1: mult_73t
-Info (12130): Elaborated megafunction instantiation "lpm_divide:Div0"
-Info (12133): Instantiated megafunction "lpm_divide:Div0" with the following parameter:
-    Info (12134): Parameter "LPM_WIDTHN" = "8"
-    Info (12134): Parameter "LPM_WIDTHD" = "8"
-    Info (12134): Parameter "LPM_NREPRESENTATION" = "SIGNED"
-    Info (12134): Parameter "LPM_DREPRESENTATION" = "SIGNED"
-    Info (12134): Parameter "LPM_HINT" = "LPM_REMAINDERPOSITIVE=FALSE"
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_fvo.tdf
-    Info (12023): Found entity 1: lpm_divide_fvo
-Info (12021): Found 1 design units, including 1 entities, in source file db/abs_divider_aag.tdf
-    Info (12023): Found entity 1: abs_divider_aag
-Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_i4f.tdf
-    Info (12023): Found entity 1: alt_u_div_i4f
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_7pc.tdf
-    Info (12023): Found entity 1: add_sub_7pc
-Info (12021): Found 1 design units, including 1 entities, in source file db/add_sub_8pc.tdf
-    Info (12023): Found entity 1: add_sub_8pc
-Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_abs_5v9.tdf
-    Info (12023): Found entity 1: lpm_abs_5v9
-Warning (13012): Latch Acumulador[12] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[4]
-Warning (13012): Latch Acumulador[13] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[4]
-Warning (13012): Latch Acumulador[14] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[4]
-Warning (13012): Latch Acumulador[15] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[4]
-Warning (13012): Latch Acumulador[8] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[0]
-Warning (13012): Latch Acumulador[9] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[4]
-Warning (13012): Latch Acumulador[10] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[4]
-Warning (13012): Latch Acumulador[11] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[4]
-Warning (13012): Latch Acumulador[4] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[3]
-Warning (13012): Latch Acumulador[5] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[3]
-Warning (13012): Latch Acumulador[6] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[3]
-Warning (13012): Latch Acumulador[7] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[3]
-Warning (13012): Latch Acumulador[0] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[1]
-Warning (13012): Latch Acumulador[1] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[3]
-Warning (13012): Latch Acumulador[2] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[3]
-Warning (13012): Latch Acumulador[3] has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[3]
-Warning (13012): Latch Carry has unsafe behavior
-    Warning (13013): Ports D and ENA on the latch are fed by the same signal Entrada_Instruccion[1]
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 385 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 15 input pins
+Info (21057): Implemented 223 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 16 input pins
     Info (21059): Implemented 56 output pins
-    Info (21061): Implemented 313 logic cells
-    Info (21062): Implemented 1 DSP elements
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 48 warnings
-    Info: Peak virtual memory: 4661 megabytes
-    Info: Processing ended: Tue Nov 16 19:34:22 2021
-    Info: Elapsed time: 00:00:06
-    Info: Total CPU time (on all processors): 00:00:06
+    Info (21061): Implemented 151 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4636 megabytes
+    Info: Processing ended: Wed Nov 17 20:11:43 2021
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
 
 

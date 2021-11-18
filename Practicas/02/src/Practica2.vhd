@@ -21,6 +21,7 @@ entity Practica2 is
 	PORT(							  		
 		-----------------------------------------------------------
 		--------------PUERTOS DE LA UNIDAD DE  CONTROL-------------		
+		clk                  : IN std_logic;									 --  Reloj
 		clr				      : IN std_logic;						   	    --  Limpiar todo			
 		exe         	  	   : IN std_logic;                            --  Boton de ejecucion
 		Entrada_Datos   	   : IN std_logic_vector(7 downto 0);         --  Switches de datos
@@ -45,7 +46,7 @@ architecture UnidadDeControl of Practica2 is
 	
 	------------------------------------------------------------------------------
 	----------------------Señales para la impresion-------------------------------
-	signal Numero_Instruccion 	: INT_ARRAY(01 downto 0); 		 -- Id de la instruccion
+	signal Numero_Instruccion 	: INT_ARRAY(0 to 1); 		 -- Id de la instruccion
 	signal Auxiliar  				: std_logic_vector(3 downto 0);-- Auxiliar para la conversion a BCD
 	signal BanderaDefault    	: std_logic := '1';				 -- Bandera para el reinicio default
 	------------------------------------------------------------------------------
@@ -53,18 +54,21 @@ architecture UnidadDeControl of Practica2 is
 	
 	type INT_ARRAY is array (integer range <>) of integer;
 begin
-	UC : 	process(clr, exe, Numero_Instruccion) begin
-		if(clr = '0') then        	 -- Se tiene que hacer limpieza de todo
-			BanderaDefault <= '1';
-		elsif (exe = '0') then  -- Fue presionado el boton de ejecucion			
+	UC : 	process(clr, exe, clk) begin
+		if clk'event and clk = '1' then
+			if (clr = '0') then        	 -- Se tiene que hacer limpieza de todo
+				BanderaDefault <= '1';	
+			elsif (exe = '0') then
 				obtenerInstruccion(Entrada_Instruccion, Numero_Instruccion);
 				menuOperaciones(Entrada_Instruccion, Entrada_Datos, Acumulador);				
 				Contador <= Contador+1;
-		end if;
-		mostrarResultado(Display_7s, Acumulador, Contador, Numero_Instruccion, Auxiliar);				
-		if (BanderaDefault = '1') then        	 -- Se ejecuta la limpieza		
-			regresarDefault(Acumulador, Contador);	
-			BanderaDefault <= '0';		
-		end if;
+			end if;
+			if (BanderaDefault = '1') then        	 -- Se ejecuta la limpieza		
+				regresarDefault(Acumulador, Contador, Display_7s, Auxiliar);	
+				BanderaDefault <= '0';		
+			else
+				mostrarResultado(Display_7s, Acumulador, Contador, Numero_Instruccion, Auxiliar);
+			end if;	
+		end if;				
 	end process UC;
 end architecture;

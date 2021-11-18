@@ -1,5 +1,5 @@
 EDA Netlist Writer report for Practica2
-Tue Nov 16 19:35:10 2021
+Wed Nov 17 20:12:10 2021
 Quartus II 64-Bit Version 12.1 Build 177 11/07/2012 SJ Web Edition
 
 
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Nov 16 19:35:10 2021 ;
+; EDA Netlist Writer Status ; Successful - Wed Nov 17 20:12:10 2021 ;
 ; Revision Name             ; Practica2                             ;
 ; Top-level Entity Name     ; Practica2                             ;
 ; Family                    ; Cyclone IV E                          ;
@@ -66,20 +66,20 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                                                                       ;
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                                                                  ;
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_7_1200mv_85c_slow.vho      ;
-; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_7_1200mv_0c_slow.vho       ;
-; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_min_1200mv_0c_fast.vho     ;
-; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2.vho                        ;
-; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_7_1200mv_85c_vhd_slow.sdo  ;
-; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_7_1200mv_0c_vhd_slow.sdo   ;
-; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_min_1200mv_0c_vhd_fast.sdo ;
-; C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_vhd.sdo                    ;
-+------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                                ;
++---------------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                           ;
++---------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_7_1200mv_85c_slow.vho      ;
+; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_7_1200mv_0c_slow.vho       ;
+; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_min_1200mv_0c_fast.vho     ;
+; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2.vho                        ;
+; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_7_1200mv_85c_vhd_slow.sdo  ;
+; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_7_1200mv_0c_vhd_slow.sdo   ;
+; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_min_1200mv_0c_vhd_fast.sdo ;
+; C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/Practica2_vhd.sdo                    ;
++---------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -88,20 +88,20 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit EDA Netlist Writer
     Info: Version 12.1 Build 177 11/07/2012 SJ Web Edition
-    Info: Processing started: Tue Nov 16 19:35:08 2021
+    Info: Processing started: Wed Nov 17 20:12:10 2021
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off Practica2 -c Practica2
-Info (204019): Generated file Practica2_7_1200mv_85c_slow.vho in folder "C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Practica2_7_1200mv_0c_slow.vho in folder "C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Practica2_min_1200mv_0c_fast.vho in folder "C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Practica2.vho in folder "C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Practica2_7_1200mv_85c_vhd_slow.sdo in folder "C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Practica2_7_1200mv_0c_vhd_slow.sdo in folder "C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Practica2_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file Practica2_vhd.sdo in folder "C:/Users/aresu/Documents/Escuela/Arquitectura de Computadoras/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Practica2_7_1200mv_85c_slow.vho in folder "C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Practica2_7_1200mv_0c_slow.vho in folder "C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Practica2_min_1200mv_0c_fast.vho in folder "C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Practica2.vho in folder "C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Practica2_7_1200mv_85c_vhd_slow.sdo in folder "C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Practica2_7_1200mv_0c_vhd_slow.sdo in folder "C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Practica2_min_1200mv_0c_vhd_fast.sdo in folder "C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file Practica2_vhd.sdo in folder "C:/Users/payan/Desktop/Arquitectura-de-Computadoras/Practicas/02/simulation/modelsim/" for EDA simulation tool
 Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 4562 megabytes
-    Info: Processing ended: Tue Nov 16 19:35:10 2021
-    Info: Elapsed time: 00:00:02
-    Info: Total CPU time (on all processors): 00:00:02
+    Info: Peak virtual memory: 4526 megabytes
+    Info: Processing ended: Wed Nov 17 20:12:10 2021
+    Info: Elapsed time: 00:00:00
+    Info: Total CPU time (on all processors): 00:00:01
 
 

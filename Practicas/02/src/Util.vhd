@@ -18,13 +18,14 @@ package Util is
 	procedure regresarDefault(															 				-- Esta funcion es el reset maestro, regresa el contador y el acumulador a 0
 		signal Acumulador : out std_logic_vector(15 downto 0);   					 		-- Es el acumulador de la unidad de control
 		signal Contador   : out unsigned(7 downto 0);	  			 						   -- Es el contador de instrucciones
-		signal Display7_s : out std_logic_vector(55 downto 0));								-- Es el display de 7 segmentos
+		signal Display7_s : out std_logic_vector(55 downto 0);								-- Es el display de 7 segmentos
+		signal Auxiliar   : inout std_logic_vector(3 downto 0));
 				
 	procedure mostrarResultado(																		-- Esta funcion muestra el resultado en las pantallas
 		signal Display_7s  			:   out std_logic_vector(55 downto 0);					-- Son los display de 7 segmentos
 		signal Acumulador	 			:    in std_logic_vector(15 downto 0);					-- Es el acumulador de la unidad de control
 		signal Contador    			:    in unsigned(7 downto 0);								-- Es el contador de instrucciones 
-		signal Numero_Instruccion 	:    in INT_ARRAY(01 downto 0);							-- Es el numero de la instruccion
+		signal Numero_Instruccion 	:    in INT_ARRAY(0 to 1);							-- Es el numero de la instruccion
 		signal Auxiliar				: inout std_logic_vector(03 downto 0));				-- Es un auxiliar para el display de 7 segmentos
 		
 	procedure menuOperaciones(																			-- Esta funcion controla el menu de operaciones
@@ -37,7 +38,7 @@ package Util is
 		
 	procedure obtenerInstruccion(
 		signal Entrada_Instruccion :  in std_logic_vector(04 downto 0);					-- Es la entrada con la instruccion	
-		signal Numero_Instruccion 	: out INT_ARRAY(01 downto 0));						   -- Es el numero de instruccion (0 - 32) 	
+		signal Numero_Instruccion 	: out INT_ARRAY(0 to 1));						   -- Es el numero de instruccion (0 - 32) 	
 		
 		
 end package;
@@ -47,7 +48,7 @@ package body Util is
 		signal Display_7s  			:   out std_logic_vector(55 downto 0);								
 		signal Acumulador	 			:    in std_logic_vector(15 downto 0);								
 		signal Contador    			:    in unsigned(07 downto 0);		
-		signal Numero_Instruccion	:    in INT_ARRAY(01 downto 0);
+		signal Numero_Instruccion	:    in INT_ARRAY(0 to 1);
 		signal Auxiliar				: inout std_logic_vector(3 downto 0)) is begin
 		
 		bcd_conv(Acumulador(15 downto 12),Display_7s(34 downto 28));
@@ -69,11 +70,36 @@ package body Util is
 	procedure regresarDefault(
 		signal Acumulador : out std_logic_vector(15 downto 0);
 		signal Contador   : out unsigned(07 downto 0);
-		signal Display7_s : out std_logic_vector(55 downto 0)) is begin
+		signal Display7_s : out std_logic_vector(55 downto 0);
+		signal Auxiliar   : inout std_logic_vector(3 downto 0)) is begin
 		
 		Acumulador <= "0000000000000000"; 
 		Contador   <= "00000000";
-		Display7_s <= "00000010000001000000100000010000001000000100000010000001";
+		
+		Auxiliar <= "0001";
+		bcd_conv(Auxiliar,Display7_s(6 downto 0));
+		
+		Auxiliar <= "0010";
+		bcd_conv(Auxiliar,Display7_s(13 downto 7));
+		
+		Auxiliar <= "0011";
+		bcd_conv(Auxiliar,Display7_s(20 downto 14));
+		
+		Auxiliar <= "0100";
+		bcd_conv(Auxiliar,Display7_s(27 downto 21));
+		
+		Auxiliar <= "0101";
+		bcd_conv(Auxiliar,Display7_s(34 downto 28));
+		
+		Auxiliar <= "0110";
+		bcd_conv(Auxiliar,Display7_s(41 downto 35));
+		 
+		Auxiliar <= "0111";
+		bcd_conv(Auxiliar,Display7_s(48 downto 42));
+		
+		Auxiliar <= "1000";
+		bcd_conv(Auxiliar,Display7_s(55 downto 49));
+		--Display7_s <= "00000010000001000000100000010000001000000100000010000001";
 	end regresarDefault;
 	
 	procedure menuOperaciones(
@@ -132,7 +158,7 @@ package body Util is
 	
 	procedure obtenerInstruccion(
 		signal Entrada_Instruccion :  in std_logic_vector(04 downto 0);					
-		signal Numero_Instruccion 	: out INT_ARRAY(01 downto 0)) is begin
+		signal Numero_Instruccion 	: out INT_ARRAY(0 to 1)) is begin
 		
 		case Entrada_Instruccion is
 			when "00000" =>																					-- Limpiar el acumulador															

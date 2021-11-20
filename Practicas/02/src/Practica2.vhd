@@ -64,7 +64,7 @@ begin
 				Contador <= Contador+1;
 			end if;
 			if (BanderaDefault = '1') then        	 -- Se ejecuta la limpieza		
-				regresarDefault(Acumulador, Contador, Display_7s, Auxiliar);	
+				regresarDefault(Acumulador, Contador, Display_7s);	
 				BanderaDefault <= '0';		
 			else
 				mostrarResultado(Display_7s, Acumulador, Contador, Numero_Instruccion, Auxiliar);

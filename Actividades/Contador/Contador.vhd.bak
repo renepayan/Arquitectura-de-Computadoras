@@ -1,0 +1,258 @@
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use IEEE.std_logic_unsigned.all;
+
+entity Contador is	
+	GENERIC(
+		FPGA_CLK : INTEGER := 250_000_000
+	);
+	PORT(
+		clk:    IN std_logic;		
+		segss:  OUT std_logic_vector(7 downto 0)
+	);
+end entity;
+architecture xd of Contador is	
+	signal LED_activating_counter: std_logic_vector(1 downto 0) := "00";
+	signal refresh_counter: STD_LOGIC_VECTOR (19 downto 0) := (others => '0');
+   signal clk1: std_logic;
+	signal clk2: std_logic;
+	signal clk3: std_logic;
+	signal clk4: std_logic;
+	signal clk5: std_logic;
+	signal clk6: std_logic;
+	signal clk7: std_logic;
+	signal clk8: std_logic;
+	signal clk9: std_logic;
+	signal clk10: std_logic;
+	signal clk11: std_logic;
+	signal clk12: std_logic;	
+	signal clk13: std_logic;
+	signal clk14: std_logic;
+	signal clk15: std_logic;
+	signal clk16: std_logic;
+	signal clk17: std_logic;
+	signal clk18: std_logic;
+	signal clk19: std_logic;
+	signal clk20: std_logic;
+	signal clk21: std_logic;
+	signal n1: integer:=0;
+	signal n2: integer:=0;
+	signal n3: integer:=0;
+	signal n4: integer:=0;
+	signal n5: integer:=0;
+	procedure convierte(signal segmentos: out std_logic_vector; signal numero: in integer) is
+	begin
+		case numero is
+			when 0 =>
+				segmentos <= "00000011";
+			when 1 =>
+				segmentos <= "10011111";
+			when 2 =>
+				segmentos <= "00100101";
+			when 3 =>
+				segmentos <= "00001101";
+			when 4 =>
+				segmentos <= "10011001";
+			when 5 =>
+				segmentos <= "01001001";
+			when 6 =>
+				segmentos <= "01000001";
+			when 7 =>
+				segmentos <= "00011111";
+			when 8 =>
+				segmentos <= "00000001";
+			when 9 =>
+				segmentos <= "00011001";	
+			when others =>
+				segmentos <= "00000011";
+		end case;
+	end procedure;
+	
+begin
+	 process (clk)
+	  begin
+		 if (rising_edge(clk)) then
+			clk1 <= not clk1;
+		 end if;
+	  end process;
+
+	  process (clk1)
+	  begin
+		 if (rising_edge(clk1)) then
+			clk2 <= not clk2;
+		 end if;
+	  end process;
+	  
+	  process (clk2)
+	  begin
+		 if (rising_edge(clk2)) then
+			clk3 <= not clk3;
+		 end if;
+	  end process;
+	  
+	  process (clk3)
+	  begin
+		 if (rising_edge(clk3)) then
+			clk4 <= not clk4;
+		 end if;
+	  end process;
+	  process (clk4)
+	  begin
+		 if (rising_edge(clk4)) then
+			clk5 <= not clk5;
+		 end if;
+	  end process;
+	  process (clk5)
+	   begin
+		 if (rising_edge(clk5)) then
+			clk6 <= not clk6;
+		 end if;
+		 
+	  end process;
+	  process (clk6)
+	   begin
+		 if (rising_edge(clk6)) then
+			clk7 <= not clk7;
+		 end if;
+	  end process;
+	  process (clk7)
+	   begin
+		 if (rising_edge(clk7)) then
+			clk8 <= not clk8;
+		 end if;
+	  end process;
+	  process (clk8)
+	   begin
+		 if (rising_edge(clk8)) then
+			clk9 <= not clk9;
+		 end if;
+	  end process;
+	  process (clk9)
+	   begin
+		 if (rising_edge(clk9)) then
+			clk10 <= not clk10;
+		 end if;
+	  end process;	   
+	  process (clk10)
+	   begin
+		 if (rising_edge(clk10)) then
+			clk11 <= not clk11;
+		 end if;
+	  end process;	
+	  process (clk11)
+	   begin
+		 if (rising_edge(clk11)) then
+			clk12 <= not clk12;
+		 end if;
+	  end process;
+	  process (clk12)
+	   begin
+		 if (rising_edge(clk12)) then
+			clk13 <= not clk13;
+		 end if;
+	  end process;
+	  process (clk13)
+	   begin
+		 if (rising_edge(clk13)) then
+			clk14 <= not clk14;
+		 end if;
+	  end process;
+	  process (clk14)
+	   begin
+		 if (rising_edge(clk14)) then
+			clk15 <= not clk15;
+		 end if;
+	  end process;
+	  process (clk15)
+	   begin
+		 if (rising_edge(clk15)) then
+			clk16 <= not clk16;
+		 end if;
+	  end process;
+	  process (clk16)
+	   begin
+		 if (rising_edge(clk16)) then
+			clk17 <= not clk17;
+		 end if;
+	  end process;
+	  process (clk17)
+	   begin
+		 if (rising_edge(clk17)) then
+			clk18 <= not clk18;
+		 end if;
+	  end process;
+	  process (clk18)
+	   begin
+		 if (rising_edge(clk18)) then
+			clk19 <= not clk19;
+		 end if;
+	  end process;
+	  process (clk19)
+	   begin
+		 if (rising_edge(clk19)) then
+			clk20 <= not clk20;
+		 end if;
+	  end process;
+	 process (clk20)
+	   begin
+		 if (rising_edge(clk20)) then
+			clk21 <= not clk21;
+		 end if;
+	  end process;
+	controlXD: process(clk)
+	begin 
+		if clk'event and clk = '1' then
+			refresh_counter <= refresh_counter + 1;
+		end if;
+	end process;
+	LED_activating_counter <= refresh_counter(19 downto 18);
+	controlarDisplay: process(LED_activating_counter)
+	begin
+		 case LED_activating_counter is
+			when "00" =>
+				digs <= "0111"; 
+				convierte(segss, n4);				
+			when "01" =>
+				digs <= "1011"; 
+				convierte(segss, n3);
+			when "10" =>
+				digs <= "1101"; 
+				convierte(segss, n2);
+			when "11" =>
+				digs <= "1110"; 
+				convierte(segss, n1);
+		end case;
+	end process;
+	control: process(clk21)
+	begin 
+		if clk21'event and clk21 = '1' then
+			if n1 < 9 then
+				n1 <= n1 +1;
+			else
+			   n1 <= 0;
+				if n2 < 9 then
+					n2 <= n2+1;
+				else
+					n2 <= 0;
+					if n3 < 9 then
+						n3 <= n3+1;
+					else
+						n3 <= 0;
+						if n4 < 9 then
+							n4 <= n4+1;
+						else
+							n4 <= 0;
+							if n5 < 9 then
+								n5 <= n5+1;
+							else
+								n5 <= 0;
+							end if;
+						end if;
+					end if;
+				end if;								
+			end if;
+		end if;
+	end process;	
+end architecture;

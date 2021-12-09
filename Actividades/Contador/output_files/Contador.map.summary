@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Dec 03 20:20:41 2021
+Quartus II 64-Bit Version : 12.1 Build 177 11/07/2012 SJ Web Edition
+Revision Name : Contador
+Top-level Entity Name : Contador
+Family : Cyclone IV E
+Total logic elements : 495
+    Total combinational functions : 495
+    Dedicated logic registers : 279
+Total registers : 279
+Total pins : 57
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0
